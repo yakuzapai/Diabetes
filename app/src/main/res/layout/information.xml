@@ -1,0 +1,468 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_information"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.v7.widget.Toolbar
+
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/colorPrimary"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_margin="@dimen/default_magin"
+                android:id="@+id/edt1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/toolbar"
+                android:layout_marginRight="@dimen/default_magin">
+
+                <EditText
+
+                    android:id="@+id/UserName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="ชื่อ-สกุล"
+                    android:inputType="text"
+                    android:maxLines="1" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <TextView
+                android:textStyle="bold"
+                android:id="@+id/edt2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/edt1"
+                android:layout_margin="@dimen/default_magin"
+                android:text="วันเกิด"
+                android:textSize="18sp" />
+
+            <TextView
+                android:text="เลือกวันเกิด"
+                android:textSize="18sp"
+                android:layout_marginRight="@dimen/default_magin"
+                android:layout_marginLeft="@dimen/default_magin"
+                android:layout_toRightOf="@+id/edt2"
+                android:layout_alignTop="@+id/edt2"
+                android:id="@+id/dob_tv"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content" />
+
+            <Button
+
+                android:id="@+id/btn_dob"
+                android:layout_marginLeft="@dimen/default_magin"
+                android:layout_toRightOf="@+id/dob_tv"
+                android:layout_below="@+id/edt1"
+                android:text="เลือกวันที่"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+
+            <TextView
+                android:textStyle="bold"
+                android:layout_marginLeft="@dimen/default_magin"
+                android:textSize="18sp"
+                android:text="อายุ :"
+                android:layout_below="@id/edt2"
+                android:id="@+id/edt3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_marginLeft="@dimen/default_magin"
+                android:layout_toRightOf="@+id/edt3"
+                android:text=""
+                android:textSize="18sp"
+                android:layout_below="@+id/edt2"
+                android:id="@+id/age"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+
+            <TextView
+                android:layout_marginLeft="@dimen/default_magin"
+                android:layout_toRightOf="@+id/age"
+                android:text="ปี"
+                android:textSize="18sp"
+                android:layout_below="@+id/edt2"
+                android:id="@+id/Rage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_marginTop="@dimen/default_magin"
+                android:id="@+id/Gender"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/edt3"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/default_magin"
+                android:layout_weight="1"
+                android:gravity="left|center"
+                android:text="เพศ :"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <RadioGroup
+                android:id="@+id/rdGender"
+                android:layout_marginTop="@dimen/default_magin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/edt3"
+                android:layout_marginLeft="16dp"
+                android:layout_toRightOf="@+id/Gender"
+                android:checkedButton="@+id/UserMan"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/UserMan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:checked="true"
+                    android:text="Male"
+                    android:textStyle="bold" />
+
+                <RadioButton
+                    android:id="@+id/UserWoman"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:text="Female"
+                    android:textStyle="bold" />
+            </RadioGroup>
+
+
+            <TextView
+                android:id="@+id/Blood"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/Gender"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/default_magin"
+                android:layout_weight="1"
+                android:gravity="left|center"
+                android:text="กรุ๊ปเลือด :"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <RadioGroup
+                android:id="@+id/RGBlood"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/Gender"
+                android:layout_marginTop="@dimen/default_magin"
+                android:layout_toRightOf="@+id/Blood"
+                android:checkedButton="@+id/BloodA"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/BloodA"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="A"
+                    android:textStyle="bold" />
+
+                <RadioButton
+                    android:id="@+id/BloodB"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="B"
+                    android:textStyle="bold" />
+
+                <RadioButton
+                    android:id="@+id/BloodAB"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="AB"
+                    android:textStyle="bold" />
+
+                <RadioButton
+                    android:id="@+id/BloodO"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="O"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+            </RadioGroup>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/edt4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/Blood"
+                android:layout_marginLeft="@dimen/default_magin"
+                android:layout_marginRight="@dimen/default_magin">
+
+                <EditText
+                    android:id="@+id/weight"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="น้ำหนัก (กิโลกรัม)"
+                    android:inputType="number"
+                    android:maxLines="1" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/edt5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/edt4"
+                android:layout_marginLeft="@dimen/default_magin"
+                android:layout_marginRight="@dimen/default_magin">
+
+                <EditText
+                    android:id="@+id/height"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="ส่วนสูง (เซนติเมตร)"
+                    android:inputType="number"
+                    android:maxLines="1" />
+
+            </android.support.design.widget.TextInputLayout>
+
+
+            <TextView
+                android:textStyle="bold"
+                android:id="@+id/bmiss"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/default_magin"
+                android:text="BMI : "
+                android:textSize="18sp"
+                android:layout_below="@+id/edt5"
+                />
+
+            <TextView
+                android:layout_toRightOf="@+id/bmiss"
+                android:id="@+id/bmi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/default_magin"
+                android:textSize="18sp"
+                android:layout_below="@+id/edt5"
+                />
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/edt6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/bmiss"
+                android:layout_marginLeft="@dimen/default_magin"
+                android:layout_marginRight="@dimen/default_magin">
+
+                <EditText
+                    android:id="@+id/UserMedicalCondition"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="โรคประจำตัว"
+                    android:inputType="text"
+                    android:maxLines="1" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/edt7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/edt6"
+                android:layout_marginLeft="@dimen/default_magin"
+                android:layout_marginRight="@dimen/default_magin">
+
+                <EditText
+                    android:id="@+id/DangerMedical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="ยาที่แพ้"
+                    android:inputType="text"
+                    android:maxLines="1" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <TextView
+                android:textStyle="bold"
+                android:layout_margin="@dimen/default_magin"
+                android:layout_below="@+id/edt7"
+                android:textSize="18sp"
+                android:text="สูบบุหรี่ : "
+                android:id="@+id/Smoke"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <RadioGroup
+                android:id="@+id/RGsmoke"
+                android:layout_marginLeft="80dp"
+                android:layout_marginTop="@dimen/default_magin"
+                android:layout_toRightOf="@+id/Smoke"
+                android:layout_below="@+id/edt7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checkedButton="@+id/UserSmoke"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/UserSmoke"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="YES"
+                    android:textStyle="bold" />
+
+                <RadioButton
+                    android:id="@+id/UserNotSmoke"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:text="NO"
+                    android:textStyle="bold" />
+            </RadioGroup>
+
+            <TextView
+                android:layout_margin="@dimen/default_magin"
+                android:textSize="18sp"
+                android:layout_below="@+id/Smoke"
+                android:id="@+id/Drink"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="ดื่มแอลกอฮอล์ :"
+                android:textStyle="bold" />
+
+            <RadioGroup
+                android:id="@+id/drinkRG"
+                android:layout_alignLeft="@+id/RGsmoke"
+                android:layout_marginTop="@dimen/default_magin"
+                android:layout_below="@+id/Smoke"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checkedButton="@+id/UserDrink"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/UserDrink"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="YES"
+                    android:textStyle="bold" />
+
+                <RadioButton
+                    android:id="@+id/UserNotDrink"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:text="NO"
+                    android:textStyle="bold" />
+            </RadioGroup>
+
+            <LinearLayout
+                android:id="@+id/userbp"
+                android:layout_below="@+id/Drink"
+                android:layout_margin="@dimen/default_magin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:textSize="18sp"
+                    android:id="@+id/BP"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:gravity="left|center"
+                    android:text="BloodPleasure :"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/UserBP1"
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="left|center"
+                    android:inputType="number"
+                    android:maxLines="1" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" / "
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/UserBP2"
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="left|center"
+                    android:inputType="number"
+                    android:maxLines="1" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="mmHg"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/edt8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/userbp"
+                android:layout_marginLeft="@dimen/default_magin"
+                android:layout_marginRight="@dimen/default_magin">
+
+                <EditText
+                    android:id="@+id/BloodSugar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Blood sugar (mg/dl)"
+                    android:inputType="number"
+                    android:maxLines="1" />
+
+            </android.support.design.widget.TextInputLayout>
+
+
+
+            <Button
+                android:id="@+id/btn_save"
+                android:layout_marginBottom="@dimen/default_magin"
+                android:layout_marginTop="@dimen/default_magin"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/edt8"
+                android:text="บันทึกข้อมูล"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+
+
+        </RelativeLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+
+</android.support.design.widget.CoordinatorLayout>
+

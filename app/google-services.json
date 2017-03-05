@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "145334225367",
+    "firebase_url": "https://diabetes2-e7ead.firebaseio.com",
+    "project_id": "diabetes2-e7ead",
+    "storage_bucket": "diabetes2-e7ead.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:145334225367:android:962df6dc3c48788c",
+        "android_client_info": {
+          "package_name": "com.kandon.caramelwaffle.diabetes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "145334225367-h8mds53jre7e66e46pf0n2fsm1nsscg8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kandon.caramelwaffle.diabetes",
+            "certificate_hash": "422C6894E01ACB6266EB265C62D5C94DAAFF6D9B"
+          }
+        },
+        {
+          "client_id": "145334225367-pth7clkvas2v97aqn43n81o92cq167ae.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDg-LbJVbKF5iDNWM5H6_BMTcPCItFbWag"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "145334225367-pth7clkvas2v97aqn43n81o92cq167ae.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
