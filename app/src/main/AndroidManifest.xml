@@ -19,8 +19,12 @@
         </activity>
         <activity android:name=".Activity.LoginActivity" />
         <activity android:name=".Activity.MainActivity" />
-        <activity android:name=".Activity.Information">
-        </activity>
+        <activity android:name=".Activity.Information" />
+        <activity android:name=".Activity.ExportActivity" />
+        <activity
+            android:name=".Activity.ContactActivity"
+            android:label="@string/title_activity_contact"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

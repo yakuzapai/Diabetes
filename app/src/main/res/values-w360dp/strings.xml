@@ -2,6 +2,5 @@
     <string name="app_name">Diabetes</string>
     <string name="openDrawer">Open menu</string>
     <string name="closeDrawer">Close menu</string>
-    <string name="title_activity_contact">ContactActivity</string>
 
 </resources>

@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -27,13 +28,13 @@ import es.dmoral.toasty.Toasty;
 public class Information extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
     private Context context;
     Toolbar toolbar;
-    EditText editTextName, weight, height,UserMedicalCondition,DangerMedical,UserBP1,UserBP2,bloodSugar;
+    EditText editTextName, weight, height, UserMedicalCondition, DangerMedical, UserBP1, UserBP2, bloodSugar;
     Button button, btn_dob;
-    TextView dob_tv, age,bmi;
+    TextView dob_tv, age, bmi;
     int yearold;
-    RadioGroup GenderRg, RGBlood,RGsmoke,drinkRG;
-    RadioButton genderRadioButton, bloodRadioButton,smokeRadioButton,drinkRadioButton;
-    float heights = 0,weights = 0,bmis;
+    RadioGroup GenderRg, RGBlood, RGsmoke, drinkRG;
+    RadioButton genderRadioButton, bloodRadioButton, smokeRadioButton, drinkRadioButton;
+    float heights = 0, weights = 0, bmis;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +76,14 @@ public class Information extends AppCompatActivity implements DatePickerDialog.O
     private void setInstances() {
         setSupportActionBar(toolbar);
         setTitle("Information");
+
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        SharedPreferences Issave = getSharedPreferences("information_save", MODE_PRIVATE);
+        if (Issave.getBoolean("isSave", false)) {
+            setUserInformation();
+        }
 
 
         btn_dob.setOnClickListener(new View.OnClickListener() {
@@ -135,12 +144,12 @@ public class Information extends AppCompatActivity implements DatePickerDialog.O
             public void onClick(View v) {
 
 
-                if (!editTextName.getText().toString().equals("")&&!dob_tv.getText().toString().equals("")
-                        &&!weight.getText().toString().equals("")&&!height.getText().toString().equals("")
-                        ){
+                if (!editTextName.getText().toString().equals("") && !dob_tv.getText().toString().equals("")
+                        && !weight.getText().toString().equals("") && !height.getText().toString().equals("")
+                        ) {
                     saveInformation();
 
-                    Toasty.success(context,"Information saved",Toast.LENGTH_LONG).show();
+                    Toasty.success(context, "Information saved", Toast.LENGTH_LONG).show();
 
                     // check isSave
                     SharedPreferences.Editor editor = getSharedPreferences("information_save", MODE_PRIVATE).edit();
@@ -150,11 +159,29 @@ public class Information extends AppCompatActivity implements DatePickerDialog.O
                     Intent intent = new Intent(context, MainActivity.class);
                     startActivity(intent);
                     finish();
-                }else {
-                    Toasty.warning(context,"Please input all information",Toast.LENGTH_SHORT).show();
+                } else {
+                    Toasty.warning(context, "Please input all information", Toast.LENGTH_SHORT).show();
                 }
             }
         });
+
+
+    }
+
+    private void setUserInformation() {
+        SharedPreferences info = getSharedPreferences("information", MODE_PRIVATE);
+        editTextName.setText(info.getString("username", "No information"));
+        weight.setText(info.getString("weight", "No information"));
+        height.setText(info.getString("height", "No information"));
+        UserMedicalCondition.setText(info.getString("UserMedicalCondition", "No information"));
+        DangerMedical.setText(info.getString("DangerMedical", "No information"));
+        UserBP1.setText(info.getString("userBP1", ""));
+        UserBP2.setText(info.getString("userBP2", ""));
+        bloodSugar.setText(info.getString("bloodSugar", "No information"));
+
+
+        dob_tv.setText(info.getString("dob", "No information"));
+        age.setText(info.getString("age", "No information"));
 
 
     }
@@ -176,13 +203,15 @@ public class Information extends AppCompatActivity implements DatePickerDialog.O
         editor.putString("blood", bloodRadioButton.getText().toString());
         editor.putString("weight", weight.getText().toString());
         editor.putString("height", height.getText().toString());
-        editor.putString("bmi",bmi.getText().toString());
-        editor.putString("UserMedicalCondition",UserMedicalCondition.getText().toString());
-        editor.putString("DangerMedical",DangerMedical.getText().toString());
+        editor.putString("bmi", bmi.getText().toString());
+        editor.putString("UserMedicalCondition", UserMedicalCondition.getText().toString());
+        editor.putString("DangerMedical", DangerMedical.getText().toString());
         editor.putString("smoke", smokeRadioButton.getText().toString());
-        editor.putString("dring",drinkRadioButton.getText().toString());
-        editor.putString("blood_pressure",UserBP1.getText().toString()+"/"+UserBP2.getText().toString());
-        editor.putString("bloodSugar",bloodSugar.getText().toString());
+        editor.putString("drink", drinkRadioButton.getText().toString());
+        editor.putString("blood_pressure", UserBP1.getText().toString() + "/" + UserBP2.getText().toString());
+        editor.putString("bloodSugar", bloodSugar.getText().toString());
+        editor.putString("userBP1", UserBP1.getText().toString());
+        editor.putString("userBP2", UserBP2.getText().toString());
         editor.apply();
 
     }
@@ -193,18 +222,29 @@ public class Information extends AppCompatActivity implements DatePickerDialog.O
     }
 
     public void bmi() {
-    try {
-        weights = Float.parseFloat(weight.getText().toString());
-        heights = Float.parseFloat(height.getText().toString());
-        heights = heights/100;
+        try {
+            weights = Float.parseFloat(weight.getText().toString());
+            heights = Float.parseFloat(height.getText().toString());
+            heights = heights / 100;
 
-    }catch (NumberFormatException e){
-        weights = 0;
-        heights = 0;
+        } catch (NumberFormatException e) {
+            weights = 0;
+            heights = 0;
+        }
+
+        bmis = (weights / (heights * heights));
+        bmi.setText(bmis + "");
+
     }
 
-        bmis = (weights/(heights*heights));
-        bmi.setText(bmis+"");
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
 
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

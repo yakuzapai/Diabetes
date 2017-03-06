@@ -90,6 +90,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
+                    Toast.makeText(context,user.getPhotoUrl().toString(),Toast.LENGTH_SHORT).show();
                     // User is signed in
                     // Log.d("LOG001", "onAuthStateChanged:signed_in:" + user.getUid());
                     //Toast.makeText(context,mAuth.getCurrentUser().getEmail().toString(),Toast.LENGTH_LONG).show();
@@ -125,6 +126,7 @@ public class LoginActivity extends AppCompatActivity {
                 SharedPreferences.Editor editor = getSharedPreferences("LOGINTOKEN", MODE_PRIVATE).edit();
                 editor.putBoolean("login", true);
                 editor.apply();
+
 
                 GoogleSignInAccount account = result.getSignInAccount();
                 firebaseAuthWithGoogle(account);

@@ -84,6 +84,7 @@
                 android:layout_height="wrap_content" />
 
             <TextView
+                android:freezesText="true"
                 android:layout_marginLeft="@dimen/default_magin"
                 android:layout_toRightOf="@+id/edt3"
                 android:text=""
@@ -256,6 +257,7 @@
                 />
 
             <TextView
+                android:freezesText="true"
                 android:layout_toRightOf="@+id/bmiss"
                 android:id="@+id/bmi"
                 android:layout_width="wrap_content"
