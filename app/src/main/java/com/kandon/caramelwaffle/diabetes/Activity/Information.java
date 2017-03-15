@@ -21,11 +21,22 @@ import android.widget.Toast;
 
 import java.util.Calendar;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.kandon.caramelwaffle.diabetes.Model.User;
 import com.kandon.caramelwaffle.diabetes.R;
 
 import es.dmoral.toasty.Toasty;
 
 public class Information extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
+
+
+    DatabaseReference mDatabase;
+    DatabaseReference mUserRef;
+    FirebaseAuth firebaseAuth;
+
+    public User user;
     private Context context;
     Toolbar toolbar;
     EditText editTextName, weight, height, UserMedicalCondition, DangerMedical, UserBP1, UserBP2, bloodSugar;
@@ -74,6 +85,10 @@ public class Information extends AppCompatActivity implements DatePickerDialog.O
     }
 
     private void setInstances() {
+        firebaseAuth = FirebaseAuth.getInstance();
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        mUserRef = mDatabase.child("user");
+
         setSupportActionBar(toolbar);
         setTitle("Information");
 
@@ -156,6 +171,8 @@ public class Information extends AppCompatActivity implements DatePickerDialog.O
                     editor.putBoolean("isSave", true);
                     editor.apply();
 
+                    mUserRef.push().setValue(user);
+
                     Intent intent = new Intent(context, MainActivity.class);
                     startActivity(intent);
                     finish();
@@ -213,6 +230,24 @@ public class Information extends AppCompatActivity implements DatePickerDialog.O
         editor.putString("userBP1", UserBP1.getText().toString());
         editor.putString("userBP2", UserBP2.getText().toString());
         editor.apply();
+
+        user = new User(editTextName.getText().toString(),
+                dob_tv.getText().toString(),
+                age.getText().toString(),
+                genderRadioButton.getText().toString(),
+                bloodRadioButton.getText().toString(),
+                height.getText().toString(),
+                weight.getText().toString(),
+                bmi.getText().toString(),
+                UserMedicalCondition.getText().toString(),
+                DangerMedical.getText().toString(),
+                smokeRadioButton.getText().toString(),
+                drinkRadioButton.getText().toString(),
+                UserBP1.getText().toString() + "/" + UserBP2.getText().toString(),
+                bloodSugar.getText().toString(),
+                UserBP1.getText().toString(),
+                UserBP2.getText().toString()
+                );
 
     }
 

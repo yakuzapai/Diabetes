@@ -30,6 +30,8 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MainActivity extends AppCompatActivity {
 
+    FirebaseAuth auth;
+
     Context context;
     Toolbar toolbar;
     DrawerLayout drawerLayout;
@@ -41,9 +43,14 @@ public class MainActivity extends AppCompatActivity {
 
     RelativeLayout row5;
 
+    RelativeLayout row7;
+
+    RelativeLayout row10;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        auth = FirebaseAuth.getInstance();
         setContentView(R.layout.activity_main);
         initInstances();
         setInstances();
@@ -56,6 +63,9 @@ public class MainActivity extends AppCompatActivity {
         row1 = (RelativeLayout)findViewById(R.id.row1);
         row2 = (RelativeLayout)findViewById(R.id.row2);
         row5 = (RelativeLayout)findViewById(R.id.row5);
+        row7 = (RelativeLayout)findViewById(R.id.row7);
+
+        row10 = (RelativeLayout)findViewById(R.id.row10);
     }
 
     private void setInstances() {
@@ -94,6 +104,23 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context,ExportActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        row7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context,ContactActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        row10.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                auth.signOut();
+                Intent intent = new Intent(context,LoadingActivity.class);
                 startActivity(intent);
             }
         });
