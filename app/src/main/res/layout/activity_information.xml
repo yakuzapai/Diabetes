@@ -23,11 +23,11 @@
                 app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
 
             <android.support.design.widget.TextInputLayout
-                android:layout_margin="@dimen/default_magin"
                 android:id="@+id/edt1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/toolbar"
+                android:layout_margin="@dimen/default_magin"
                 android:layout_marginRight="@dimen/default_magin">
 
                 <EditText
@@ -42,77 +42,77 @@
             </android.support.design.widget.TextInputLayout>
 
             <TextView
-                android:textStyle="bold"
                 android:id="@+id/edt2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/edt1"
                 android:layout_margin="@dimen/default_magin"
                 android:text="วันเกิด"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <TextView
-                android:text="เลือกวันเกิด"
-                android:textSize="18sp"
-                android:layout_marginRight="@dimen/default_magin"
-                android:layout_marginLeft="@dimen/default_magin"
-                android:layout_toRightOf="@+id/edt2"
-                android:layout_alignTop="@+id/edt2"
                 android:id="@+id/dob_tv"
                 android:layout_width="120dp"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/edt2"
+                android:layout_marginLeft="@dimen/default_magin"
+                android:layout_marginRight="@dimen/default_magin"
+                android:layout_toRightOf="@+id/edt2"
+                android:text="เลือกวันเกิด"
+                android:textSize="18sp" />
 
             <Button
 
                 android:id="@+id/btn_dob"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/edt1"
                 android:layout_marginLeft="@dimen/default_magin"
                 android:layout_toRightOf="@+id/dob_tv"
-                android:layout_below="@+id/edt1"
-                android:text="เลือกวันที่"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:text="เลือกวันที่" />
 
 
             <TextView
-                android:textStyle="bold"
-                android:layout_marginLeft="@dimen/default_magin"
-                android:textSize="18sp"
-                android:text="อายุ :"
-                android:layout_below="@id/edt2"
                 android:id="@+id/edt3"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_below="@id/edt2"
+                android:layout_marginLeft="@dimen/default_magin"
+                android:text="อายุ :"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <TextView
-                android:freezesText="true"
-                android:layout_marginLeft="@dimen/default_magin"
-                android:layout_toRightOf="@+id/edt3"
-                android:text=""
-                android:textSize="18sp"
-                android:layout_below="@+id/edt2"
                 android:id="@+id/age"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/edt2"
+                android:layout_marginLeft="@dimen/default_magin"
+                android:layout_toRightOf="@+id/edt3"
+                android:freezesText="true"
+                android:text=""
+                android:textSize="18sp" />
 
 
             <TextView
+                android:id="@+id/Rage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/edt2"
                 android:layout_marginLeft="@dimen/default_magin"
                 android:layout_toRightOf="@+id/age"
                 android:text="ปี"
-                android:textSize="18sp"
-                android:layout_below="@+id/edt2"
-                android:id="@+id/Rage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:textSize="18sp" />
 
             <TextView
-                android:layout_marginTop="@dimen/default_magin"
                 android:id="@+id/Gender"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/edt3"
                 android:layout_gravity="center"
                 android:layout_marginLeft="@dimen/default_magin"
+                android:layout_marginTop="@dimen/default_magin"
                 android:layout_weight="1"
                 android:gravity="left|center"
                 android:text="เพศ :"
@@ -121,11 +121,11 @@
 
             <RadioGroup
                 android:id="@+id/rdGender"
-                android:layout_marginTop="@dimen/default_magin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/edt3"
                 android:layout_marginLeft="16dp"
+                android:layout_marginTop="@dimen/default_magin"
                 android:layout_toRightOf="@+id/Gender"
                 android:checkedButton="@+id/UserMan"
                 android:gravity="center"
@@ -137,7 +137,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:checked="true"
-                    android:text="Male"
+                    android:text="ชาย"
                     android:textStyle="bold" />
 
                 <RadioButton
@@ -145,7 +145,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="25dp"
-                    android:text="Female"
+                    android:text="หญิง"
                     android:textStyle="bold" />
             </RadioGroup>
 
@@ -246,26 +246,24 @@
 
 
             <TextView
-                android:textStyle="bold"
                 android:id="@+id/bmiss"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/edt5"
                 android:layout_margin="@dimen/default_magin"
                 android:text="BMI : "
                 android:textSize="18sp"
-                android:layout_below="@+id/edt5"
-                />
+                android:textStyle="bold" />
 
             <TextView
-                android:freezesText="true"
-                android:layout_toRightOf="@+id/bmiss"
                 android:id="@+id/bmi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/default_magin"
-                android:textSize="18sp"
                 android:layout_below="@+id/edt5"
-                />
+                android:layout_margin="@dimen/default_magin"
+                android:layout_toRightOf="@+id/bmiss"
+                android:freezesText="true"
+                android:textSize="18sp" />
 
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/edt6"
@@ -304,23 +302,23 @@
             </android.support.design.widget.TextInputLayout>
 
             <TextView
-                android:textStyle="bold"
-                android:layout_margin="@dimen/default_magin"
-                android:layout_below="@+id/edt7"
-                android:textSize="18sp"
-                android:text="สูบบุหรี่ : "
                 android:id="@+id/Smoke"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/edt7"
+                android:layout_margin="@dimen/default_magin"
+                android:text="สูบบุหรี่ : "
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <RadioGroup
                 android:id="@+id/RGsmoke"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/edt7"
                 android:layout_marginLeft="80dp"
                 android:layout_marginTop="@dimen/default_magin"
                 android:layout_toRightOf="@+id/Smoke"
-                android:layout_below="@+id/edt7"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:checkedButton="@+id/UserSmoke"
                 android:gravity="center"
                 android:orientation="horizontal">
@@ -330,7 +328,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:text="YES"
+                    android:text="ใช่"
                     android:textStyle="bold" />
 
                 <RadioButton
@@ -338,28 +336,28 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="25dp"
-                    android:text="NO"
+                    android:text="ไม่ใช่"
                     android:textStyle="bold" />
             </RadioGroup>
 
             <TextView
-                android:layout_margin="@dimen/default_magin"
-                android:textSize="18sp"
-                android:layout_below="@+id/Smoke"
                 android:id="@+id/Drink"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/Smoke"
                 android:layout_gravity="center"
+                android:layout_margin="@dimen/default_magin"
                 android:text="ดื่มแอลกอฮอล์ :"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <RadioGroup
                 android:id="@+id/drinkRG"
-                android:layout_alignLeft="@+id/RGsmoke"
-                android:layout_marginTop="@dimen/default_magin"
-                android:layout_below="@+id/Smoke"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/RGsmoke"
+                android:layout_below="@+id/Smoke"
+                android:layout_marginTop="@dimen/default_magin"
                 android:checkedButton="@+id/UserDrink"
                 android:gravity="center"
                 android:orientation="horizontal">
@@ -369,7 +367,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:text="YES"
+                    android:text="ใช่"
                     android:textStyle="bold" />
 
                 <RadioButton
@@ -377,30 +375,31 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="25dp"
-                    android:text="NO"
+                    android:text="ไม่ใข่"
                     android:textStyle="bold" />
             </RadioGroup>
 
             <LinearLayout
                 android:id="@+id/userbp"
-                android:layout_below="@+id/Drink"
-                android:layout_margin="@dimen/default_magin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/Drink"
+                android:layout_margin="@dimen/default_magin"
                 android:orientation="horizontal">
 
                 <TextView
-                    android:textSize="18sp"
                     android:id="@+id/BP"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:gravity="left|center"
-                    android:text="BloodPleasure :"
+                    android:text="ความดันโลหิต :"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
 
                 <EditText
+                    android:maxLength="3"
                     android:id="@+id/UserBP1"
                     android:layout_width="60dp"
                     android:layout_height="wrap_content"
@@ -415,6 +414,7 @@
                     android:textStyle="bold" />
 
                 <EditText
+                    android:maxLength="3"
                     android:id="@+id/UserBP2"
                     android:layout_width="60dp"
                     android:layout_height="wrap_content"
@@ -448,17 +448,130 @@
             </android.support.design.widget.TextInputLayout>
 
 
+            <ImageView
+                android:id="@+id/line"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/edt8"
+                android:layout_margin="@dimen/default_magin"
+                android:scaleType="centerCrop"
+                android:src="@drawable/lightgreyline" />
+
+            <TextView
+                android:id="@+id/textdum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/line"
+                android:layout_marginLeft="@dimen/default_magin"
+                android:text="เวลารับประทานอาหาร"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/breakfasttv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textdum"
+                android:layout_marginLeft="@dimen/default_magin"
+                android:layout_marginTop="32dp"
+                android:text="อาหารเช้า"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/BtnBreakfast"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/textdum"
+                android:layout_marginRight="@dimen/default_magin"
+                android:layout_marginTop="@dimen/default_magin"
+                android:text="เลือกเวลา" />
+
+            <TextView
+                android:id="@+id/lanch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/breakfasttv"
+                android:layout_marginLeft="@dimen/default_magin"
+                android:layout_marginTop="32dp"
+                android:text="อาหารกลางวัน"
+                android:textSize="18sp" />
+
+
+            <Button
+                android:id="@+id/BtnLanch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/breakfasttv"
+                android:layout_marginRight="@dimen/default_magin"
+                android:layout_marginTop="@dimen/default_magin"
+                android:text="เลือกเวลา" />
+
+            <TextView
+                android:id="@+id/dinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/lanch"
+                android:layout_marginLeft="@dimen/default_magin"
+                android:layout_marginTop="32dp"
+                android:text="อาหารกลางวัน"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/BtnDinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/lanch"
+                android:layout_marginRight="@dimen/default_magin"
+                android:layout_marginTop="@dimen/default_magin"
+                android:text="เลือกเวลา" />
+
 
             <Button
                 android:id="@+id/btn_save"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/dinner"
+                android:layout_centerHorizontal="true"
                 android:layout_marginBottom="@dimen/default_magin"
                 android:layout_marginTop="@dimen/default_magin"
-                android:layout_centerHorizontal="true"
-                android:layout_below="@+id/edt8"
-                android:text="บันทึกข้อมูล"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:text="บันทึกข้อมูล" />
 
+            <TextView
+                android:id="@+id/tv_break"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textdum"
+                android:layout_marginRight="32dp"
+                android:layout_marginTop="32dp"
+                android:layout_toLeftOf="@+id/BtnBreakfast"
+                android:text=""
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tv_lanch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/tv_break"
+                android:layout_below="@+id/breakfasttv"
+                android:layout_marginTop="32dp"
+                android:layout_toLeftOf="@+id/BtnLanch"
+                android:text=""
+                android:textSize="18sp" />
+
+
+            <TextView
+                android:id="@+id/tv_dinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/tv_break"
+                android:layout_below="@+id/lanch"
+                android:layout_marginTop="32dp"
+                android:layout_toLeftOf="@+id/BtnDinner"
+                android:text=""
+                android:textSize="18sp" />
 
 
         </RelativeLayout>

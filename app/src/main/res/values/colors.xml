@@ -4,4 +4,5 @@
     <color name="colorPrimaryDark">#D32F2F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="drawer_press">#FBD0BF</color>
+    <color name="item_press">#99F44336</color>
 </resources>

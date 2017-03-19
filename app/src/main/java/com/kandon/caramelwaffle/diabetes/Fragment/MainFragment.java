@@ -141,63 +141,63 @@ public class MainFragment extends Fragment {
     }
 
     private void getUserInformation() {
-        SharedPreferences info = getContext().getSharedPreferences("information", getContext().MODE_PRIVATE);
-        name.setText(info.getString("username","No information"));
-        dob.setText(info.getString("dob","No information"));
-        age.setText(info.getString("age","No information")+" ปี");
-        gender.setText(info.getString("gender","No information"));
-        blood.setText(info.getString("blood","No information"));
-        weight.setText(info.getString("weight","No information"));
-        height.setText(info.getString("height","No information"));
-        bmi.setText(info.getString("bmi","No information"));
-        UserMedicalCondition.setText(info.getString("UserMedicalCondition","No information"));
-        DangerMedical.setText(info.getString("DangerMedical","No information"));
-        smoke.setText(info.getString("smoke","No information"));
-        drink.setText(info.getString("drink","No information"));
-        blood_pressure.setText(info.getString("blood_pressure","No information"));
-        bloodSugar.setText(info.getString("bloodSugar","No information"));
+        SharedPreferences info = getContext().getSharedPreferences("activity_information", getContext().MODE_PRIVATE);
+        name.setText(info.getString("username","ไม่มีข้อมูล"));
+        dob.setText(info.getString("dob","ไม่มีข้อมูล"));
+        age.setText(info.getString("age","ไม่มีข้อมูล")+" ปี");
+        gender.setText(info.getString("gender","ไม่มีข้อมูล"));
+        blood.setText(info.getString("blood","ไม่มีข้อมูล"));
+        weight.setText(info.getString("weight","ไม่มีข้อมูล"));
+        height.setText(info.getString("height","ไม่มีข้อมูล"));
+        bmi.setText(info.getString("bmi","ไม่มีข้อมูล"));
+        UserMedicalCondition.setText(info.getString("UserMedicalCondition","ไม่มีข้อมูล"));
+        DangerMedical.setText(info.getString("DangerMedical","ไม่มีข้อมูล"));
+        smoke.setText(info.getString("smoke","ไม่มีข้อมูล"));
+        drink.setText(info.getString("drink","ไม่มีข้อมูล"));
+        blood_pressure.setText(info.getString("blood_pressure","ไม่มีข้อมูล"));
+        bloodSugar.setText(info.getString("bloodSugar","ไม่มีข้อมูล"));
 
         if (name.getText().equals("")){
-            name.setText("No information");
+            name.setText("ไม่มีข้อมูล");
         }
         if (dob.getText().equals("")){
-            dob.setText("No information");
+            dob.setText("ไม่มีข้อมูล");
         }
         if (age.getText().equals("")){
-            age.setText("No information");
+            age.setText("ไม่มีข้อมูล");
         }
         if (gender.getText().equals("")){
-            gender.setText("No information");
+            gender.setText("ไม่มีข้อมูล");
         }
         if (blood.getText().equals("")){
-            blood.setText("No information");
+            blood.setText("ไม่มีข้อมูล");
         }
         if (weight.getText().equals("")){
-            weight.setText("No information");
+            weight.setText("ไม่มีข้อมูล");
         }
         if (height.getText().equals("")){
-            height.setText("No information");
+            height.setText("ไม่มีข้อมูล");
         }
         if (bmi.getText().equals("")){
-            bmi.setText("No information");
+            bmi.setText("ไม่มีข้อมูล");
         }
         if (UserMedicalCondition.getText().equals("")){
-            UserMedicalCondition.setText("No information");
+            UserMedicalCondition.setText("ไม่มีข้อมูล");
         }
         if (DangerMedical.getText().equals("")){
-            DangerMedical.setText("No information");
+            DangerMedical.setText("ไม่มีข้อมูล");
         }
         if (smoke.getText().equals("")){
-            smoke.setText("No information");
+            smoke.setText("ไม่มีข้อมูล");
         }
         if (drink.getText().equals("")){
-            drink.setText("No information");
+            drink.setText("ไม่มีข้อมูล");
         }
         if (blood_pressure.getText().equals("/")){
-            blood_pressure.setText("No information");
+            blood_pressure.setText("ไม่มีข้อมูล");
         }
         if (bloodSugar.getText().equals("")){
-            bloodSugar.setText("No information");
+            bloodSugar.setText("ไม่มีข้อมูล");
         }
 
 
