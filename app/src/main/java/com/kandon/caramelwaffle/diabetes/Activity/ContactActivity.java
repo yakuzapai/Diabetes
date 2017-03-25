@@ -36,8 +36,7 @@ public class ContactActivity extends AppCompatActivity {
     private DatabaseReference mHospitalRef;
     private ValueEventListener valueEventListener;
     private ChildEventListener childEventListener;
-    private Button button;
-    int i = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

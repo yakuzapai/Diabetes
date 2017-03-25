@@ -53,7 +53,6 @@ public class LoadingActivity extends AppCompatActivity {
             }
 
             public void onFinish() {
-             // TODO CHECK TOKEN
                 SharedPreferences prefs = getSharedPreferences("LOGINTOKEN", MODE_PRIVATE);
                 Boolean isLogin = prefs.getBoolean("login", false);
 

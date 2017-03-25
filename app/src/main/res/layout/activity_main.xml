@@ -284,37 +284,6 @@
 
                     </RelativeLayout>
 
-                    <!-- BTN ROW8 -->
-                    <RelativeLayout
-
-                        android:id="@+id/row8"
-                        android:layout_width="match_parent"
-                        android:layout_height="55dp"
-                        android:layout_alignParentStart="true"
-                        android:layout_below="@+id/row7"
-                        android:background="@drawable/drawer_selector"
-                        android:clickable="true">
-
-
-                        <ImageView
-                            android:layout_width="45dp"
-                            android:layout_height="45dp"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginTop="8dp"
-                            android:scaleType="centerInside"
-                            android:src="@drawable/ic_lightbulb_outline_black_48dp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="80dp"
-                            android:layout_marginTop="18dp"
-                            android:text="ความรู้ทั่วไป"
-                            android:textColor="@android:color/black"
-                            android:textSize="18sp" />
-
-
-                    </RelativeLayout>
 
                     <!-- BTN ROW9 -->
                     <RelativeLayout
@@ -323,7 +292,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="55dp"
                         android:layout_alignParentStart="true"
-                        android:layout_below="@+id/row8"
+                        android:layout_below="@+id/row7"
                         android:background="@drawable/drawer_selector"
                         android:clickable="true">
 

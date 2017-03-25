@@ -515,7 +515,7 @@
                 android:layout_below="@+id/lanch"
                 android:layout_marginLeft="@dimen/default_magin"
                 android:layout_marginTop="32dp"
-                android:text="อาหารกลางวัน"
+                android:text="อาหารเย็น"
                 android:textSize="18sp" />
 
             <Button

@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.net.Uri;
+import android.provider.Settings;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.widget.DrawerLayout;
@@ -32,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
     FirebaseAuth auth;
 
+    int num = 0;
     Context context;
     Toolbar toolbar;
     DrawerLayout drawerLayout;
@@ -42,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     RelativeLayout row5;
-
+    RelativeLayout row6;
     RelativeLayout row7;
 
     RelativeLayout row10;
@@ -63,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
         row1 = (RelativeLayout)findViewById(R.id.row1);
         row2 = (RelativeLayout)findViewById(R.id.row2);
         row5 = (RelativeLayout)findViewById(R.id.row5);
+        row6 = (RelativeLayout)findViewById(R.id.row6);
         row7 = (RelativeLayout)findViewById(R.id.row7);
 
         row10 = (RelativeLayout)findViewById(R.id.row10);
@@ -108,10 +112,19 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        row6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri gmmIntentUri = Uri.parse("geo:0,0?q=โรงพยาบาล");
+                Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+                mapIntent.setPackage("com.google.android.apps.maps");
+                startActivity(mapIntent);
+            }
+        });
         row7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context,ContactActivity.class);
+                Intent intent = new Intent(context,CallActivity.class);
                 startActivity(intent);
             }
         });
@@ -145,5 +158,12 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+        System.exit(0);
     }
 }

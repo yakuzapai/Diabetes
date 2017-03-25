@@ -25,7 +25,10 @@
         <activity
             android:name=".Activity.ContactActivity"
             android:label="@string/title_activity_contact"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
+        <activity android:name=".Activity.CallActivity" >
+            </activity>
+        <activity android:name=".Activity.AddContactActivity"></activity>
     </application>
 
 </manifest>
