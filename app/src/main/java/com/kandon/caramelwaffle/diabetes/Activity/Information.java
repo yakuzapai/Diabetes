@@ -102,7 +102,7 @@ public class Information extends AppCompatActivity implements DatePickerDialog.O
         mUserRef = mDatabase.child("user");
 
         setSupportActionBar(toolbar);
-        setTitle("Information");
+        setTitle("ข้อมูลส่วนตัว");
 
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -291,13 +291,15 @@ public class Information extends AppCompatActivity implements DatePickerDialog.O
                     editor.putBoolean("isSave", true);
                     editor.apply();
 
-                    mUserRef.push().setValue(user);
+                    // save to firebase
+                   // mUserRef.push().setValue(user);
+                    mUserRef.child( firebaseAuth.getCurrentUser().getUid()).setValue(user);
 
                     Intent intent = new Intent(context, MainActivity.class);
                     startActivity(intent);
                     finish();
                 } else {
-                    Toasty.warning(context, "Please input all activity_information", Toast.LENGTH_SHORT).show();
+                    Toasty.error(context, "Please input all information", Toast.LENGTH_SHORT).show();
                 }
             }
         });

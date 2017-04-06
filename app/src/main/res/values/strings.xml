@@ -4,4 +4,8 @@
     <string name="closeDrawer">Close menu</string>
     <string name="title_activity_contact">ContactActivity</string>
 
+    <string-array name="med">
+        <item>ยาเม็ด</item>
+        <item>ยาฉีด</item>
+    </string-array>
 </resources>

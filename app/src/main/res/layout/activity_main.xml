@@ -49,12 +49,12 @@
                 android:background="#EF5350">
 
                 <ImageView
-                    android:layout_width="120dp"
-                    android:layout_height="120dp"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
                     android:layout_centerInParent="true"
                     android:layout_margin="@dimen/default_magin"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/logo_dummy" />
+                    android:src="@drawable/drawer_img" />
 
 
             </RelativeLayout>
@@ -80,12 +80,11 @@
 
 
                         <ImageView
-                            android:layout_width="45dp"
-                            android:layout_height="45dp"
+                            android:layout_width="42dp"
+                            android:layout_height="42dp"
                             android:layout_marginLeft="16dp"
                             android:layout_marginTop="8dp"
-                            android:scaleType="centerInside"
-                            android:src="@drawable/ic_home_black_48dp" />
+                            android:src="@drawable/newhomes" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -111,12 +110,12 @@
 
 
                         <ImageView
-                            android:layout_width="45dp"
-                            android:layout_height="45dp"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
                             android:layout_marginLeft="16dp"
                             android:layout_marginTop="8dp"
                             android:scaleType="centerInside"
-                            android:src="@drawable/ic_info_outline_black_48dp" />
+                            android:src="@drawable/information" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -141,29 +140,29 @@
 
 
                         <ImageView
-                            android:layout_width="45dp"
-                            android:layout_height="45dp"
+                            android:layout_width="42dp"
+                            android:layout_height="42dp"
                             android:layout_marginLeft="16dp"
                             android:layout_marginTop="8dp"
                             android:scaleType="centerInside"
-                            android:src="@drawable/ic_info_outline_black_48dp" />
+                            android:src="@drawable/sugardiary"/>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="80dp"
                             android:layout_marginTop="18dp"
-                            android:text="คำนวณน้ำตาล"
+                            android:text="บันทึกน้ำตาล"
                             android:textColor="@android:color/black"
                             android:textSize="18sp" />
 
 
                     </RelativeLayout>
 
-                    <!-- BTN ROW4 -->
+                    <!-- BTN ROW SUS -->
                     <RelativeLayout
 
-                        android:id="@+id/row4"
+                        android:id="@+id/rowSus"
                         android:layout_width="match_parent"
                         android:layout_height="55dp"
                         android:layout_alignParentStart="true"
@@ -173,12 +172,42 @@
 
 
                         <ImageView
-                            android:layout_width="45dp"
-                            android:layout_height="45dp"
+                            android:layout_width="42dp"
+                            android:layout_height="42dp"
                             android:layout_marginLeft="16dp"
                             android:layout_marginTop="8dp"
                             android:scaleType="centerInside"
-                            android:src="@drawable/ic_info_outline_black_48dp" />
+                            android:src="@drawable/bloodsugar" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="80dp"
+                            android:layout_marginTop="18dp"
+                            android:text="น้ำตาลในอาหาร"
+                            android:textColor="@android:color/black"
+                            android:textSize="18sp" />
+                    </RelativeLayout>
+
+                    <!-- BTN ROW4 -->
+                    <RelativeLayout
+
+                        android:id="@+id/row4"
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_below="@+id/rowSus"
+                        android:background="@drawable/drawer_selector"
+                        android:clickable="true">
+
+
+                        <ImageView
+                            android:layout_width="42dp"
+                            android:layout_height="42dp"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="8dp"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/med_flat" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -203,12 +232,12 @@
 
 
                         <ImageView
-                            android:layout_width="45dp"
-                            android:layout_height="45dp"
+                            android:layout_width="42dp"
+                            android:layout_height="42dp"
                             android:layout_marginLeft="16dp"
                             android:layout_marginTop="8dp"
                             android:scaleType="centerInside"
-                            android:src="@drawable/ic_mail_outline_black_48dp" />
+                            android:src="@drawable/exports" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -233,12 +262,12 @@
 
 
                         <ImageView
-                            android:layout_width="45dp"
-                            android:layout_height="45dp"
+                            android:layout_width="42dp"
+                            android:layout_height="42dp"
                             android:layout_marginLeft="16dp"
                             android:layout_marginTop="8dp"
                             android:scaleType="centerInside"
-                            android:src="@drawable/ic_add_location_black_48dp" />
+                            android:src="@drawable/maps" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -265,12 +294,12 @@
 
 
                         <ImageView
-                            android:layout_width="45dp"
-                            android:layout_height="45dp"
+                            android:layout_width="42dp"
+                            android:layout_height="42dp"
                             android:layout_marginLeft="16dp"
                             android:layout_marginTop="8dp"
                             android:scaleType="centerInside"
-                            android:src="@drawable/ic_call_black_48dp" />
+                            android:src="@drawable/contacts" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -298,12 +327,12 @@
 
 
                         <ImageView
-                            android:layout_width="45dp"
-                            android:layout_height="45dp"
+                            android:layout_width="42dp"
+                            android:layout_height="42dp"
                             android:layout_marginLeft="16dp"
                             android:layout_marginTop="8dp"
                             android:scaleType="centerInside"
-                            android:src="@drawable/ic_import_contacts_black_48dp" />
+                            android:src="@drawable/reffer" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -330,12 +359,12 @@
 
 
                         <ImageView
-                            android:layout_width="45dp"
+                            android:layout_width="47dp"
                             android:layout_height="45dp"
                             android:layout_marginLeft="16dp"
                             android:layout_marginTop="8dp"
                             android:scaleType="centerInside"
-                            android:src="@drawable/ic_exit_to_app_black_48dp" />
+                            android:src="@drawable/newsignout" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -356,7 +385,7 @@
         </RelativeLayout>
 
 
-    </RelativeLayout>
+</RelativeLayout>
 
 
 </android.support.v4.widget.DrawerLayout>

@@ -48,7 +48,7 @@
             android:layout_marginRight="@dimen/default_magin">
 
             <EditText
-
+                android:maxLength="10"
                 android:id="@+id/number"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

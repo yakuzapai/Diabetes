@@ -26,9 +26,14 @@
             android:name=".Activity.ContactActivity"
             android:label="@string/title_activity_contact"
             android:theme="@style/AppTheme" />
-        <activity android:name=".Activity.CallActivity" >
-            </activity>
-        <activity android:name=".Activity.AddContactActivity"></activity>
+        <activity android:name=".Activity.CallActivity" />
+        <activity android:name=".Activity.AddContactActivity" />
+        <activity android:name=".Activity.MedicineActivity" />
+        <activity android:name=".Activity.SolidMedActivity" />
+        <activity android:name=".Activity.InjectActivity" />
+        <activity android:name=".Activity.RefActivity" />
+        <activity android:name=".Activity.FoodActivity" />
+        <activity android:name=".Activity.AddSugarActivity"></activity>
     </application>
 
 </manifest>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:background="?android:attr/selectableItemBackground"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/item_parent"
+    android:clickable="true"
+    android:layout_width="match_parent"
+    android:layout_height="57dp">
+
+    <TextView
+        android:ellipsize="end"
+        android:text="ข้าวผัดปู"
+        android:id="@+id/tv_list"
+        android:layout_margin="@dimen/default_magin"
+        android:textSize="18sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:scaleType="centerCrop"
+        android:layout_marginRight="@dimen/default_magin"
+        android:layout_marginLeft="@dimen/default_magin"
+        android:layout_below="@+id/tv_list"
+        android:src="@drawable/lightgreyline"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+

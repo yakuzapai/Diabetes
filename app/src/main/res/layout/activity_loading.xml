@@ -8,24 +8,16 @@
     tools:context="com.kandon.caramelwaffle.diabetes.Activity.LoadingActivity">
 
     <ImageView
+        android:layout_centerInParent="true"
+        android:paddingTop="@dimen/default_magin"
+        android:paddingLeft="@dimen/default_magin"
         android:scaleType="centerCrop"
         android:id="@+id/logo"
         android:layout_marginBottom="@dimen/default_magin"
-        android:layout_above="@+id/text"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/logo_dummy"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-
-    <TextView
-        android:id="@+id/text"
-        android:textSize="36sp"
-        android:textColor="@android:color/white"
-        android:text="@string/app_name"
-        android:layout_centerInParent="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:src="@drawable/logo_new"
+        android:layout_width="match_parent"
+        android:layout_height="280dp" />
 
 
     <ProgressBar

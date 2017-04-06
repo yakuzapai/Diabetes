@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.net.Uri;
+import android.os.CountDownTimer;
+import android.os.Handler;
 import android.provider.Settings;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -14,6 +16,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.RelativeLayout;
@@ -42,13 +45,17 @@ public class MainActivity extends AppCompatActivity {
 
     RelativeLayout row1;
     RelativeLayout row2;
-
-
+    RelativeLayout rowSus;
+    RelativeLayout row3;
+    RelativeLayout row4;
     RelativeLayout row5;
     RelativeLayout row6;
     RelativeLayout row7;
-
+    RelativeLayout row9;
     RelativeLayout row10;
+
+    private Boolean exit = false;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,10 +72,14 @@ public class MainActivity extends AppCompatActivity {
         drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
         row1 = (RelativeLayout)findViewById(R.id.row1);
         row2 = (RelativeLayout)findViewById(R.id.row2);
+        row3 = (RelativeLayout)findViewById(R.id.row3);
+        rowSus = (RelativeLayout)findViewById(R.id.rowSus);
+        row4 = (RelativeLayout)findViewById(R.id.row4);
         row5 = (RelativeLayout)findViewById(R.id.row5);
         row6 = (RelativeLayout)findViewById(R.id.row6);
         row7 = (RelativeLayout)findViewById(R.id.row7);
 
+        row9 = (RelativeLayout)findViewById(R.id.row9);
         row10 = (RelativeLayout)findViewById(R.id.row10);
     }
 
@@ -104,6 +115,27 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        row3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        rowSus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(context,FoodActivity.class));
+            }
+        });
+
+        row4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context,MedicineActivity.class);
+                startActivity(intent);
+            }
+        });
         row5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -125,6 +157,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context,CallActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        row9.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context,RefActivity.class);
                 startActivity(intent);
             }
         });
@@ -152,18 +192,46 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_edit, menu);
+        return true;
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
+        int id = item.getItemId();
+
+        if (id == R.id.action_edit) {
+            Intent intent = new Intent(context,Information.class);
+            startActivity(intent);
+            return true;
+        }
         if (actionBarDrawerToggle.onOptionsItemSelected(item)){
             return true;
         }
+
         return super.onOptionsItemSelected(item);
     }
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        finish();
-        System.exit(0);
+        if (exit) {
+            finish(); // finish activity
+        } else {
+            Toast.makeText(this, "Press Back again to Exit.",
+                    Toast.LENGTH_SHORT).show();
+            exit = true;
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    exit = false;
+                }
+            }, 3 * 1000);
+
+        }
+
     }
 }

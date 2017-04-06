@@ -16,15 +16,15 @@
         app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <ImageView
+        android:scaleType="centerInside"
         android:layout_below="@+id/toolbar"
         android:id="@+id/logo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/text"
+        android:layout_width="170dp"
+        android:layout_height="170dp"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="@dimen/default_magin"
         android:layout_marginTop="64dp"
-        android:src="@drawable/logo_dummy" />
+        android:src="@drawable/drawer_img" />
 
     <Button
         android:layout_marginLeft="@dimen/default_magin"
