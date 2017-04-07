@@ -26,25 +26,16 @@
         android:layout_marginTop="64dp"
         android:src="@drawable/drawer_img" />
 
-    <Button
+
+
+    <com.google.android.gms.common.SignInButton
+        android:layout_below="@+id/logo"
         android:layout_marginLeft="@dimen/default_magin"
         android:layout_marginRight="@dimen/default_magin"
         android:layout_marginTop="120dp"
-        android:id="@+id/login"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/logo"
-        android:layout_centerHorizontal="true"
-        android:text="LOGIN WITH GUEST" />
-
-    <com.google.android.gms.common.SignInButton
-        android:layout_marginLeft="@dimen/default_magin"
-        android:layout_marginRight="@dimen/default_magin"
-        android:layout_marginTop="@dimen/default_magin"
         android:id="@+id/g_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/login"
         android:layout_centerHorizontal="true" />
 
 

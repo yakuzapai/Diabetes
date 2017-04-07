@@ -177,14 +177,14 @@
                             android:layout_marginLeft="16dp"
                             android:layout_marginTop="8dp"
                             android:scaleType="centerInside"
-                            android:src="@drawable/bloodsugar" />
+                            android:src="@drawable/new_food" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="80dp"
                             android:layout_marginTop="18dp"
-                            android:text="น้ำตาลในอาหาร"
+                            android:text="พลังงานในอาหาร"
                             android:textColor="@android:color/black"
                             android:textSize="18sp" />
                     </RelativeLayout>
@@ -384,8 +384,9 @@
             </android.support.v4.widget.NestedScrollView>
         </RelativeLayout>
 
+    </RelativeLayout>
 
-</RelativeLayout>
+
 
 
 </android.support.v4.widget.DrawerLayout>

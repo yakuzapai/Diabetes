@@ -141,7 +141,6 @@ public class CallActivity extends AppCompatActivity implements EasyPermissions.P
     @Override
     protected void onResume() {
         super.onResume();
-        adapter.notifyDataSetChanged();
     }
 
     @Override

@@ -128,7 +128,7 @@ public class SolidMedActivity extends AppCompatActivity {
                     medTypes = "Onglyza (อองไกลซา)";
                     spinner_type.setItems("Onglyza (อองไกลซา)");
                 } else if (position == 9) {
-                    med_img.setImageResource(R.drawable.med_mock);
+                    med_img.setImageResource(R.drawable.saxa);
                     medTypes = "Januvia (แจนูเวีย)";
                     spinner_type.setItems("Januvia (แจนูเวีย)");
                 } else if (position == 10) {

@@ -27,6 +27,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.GenericTypeIndicator;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.kandon.caramelwaffle.diabetes.Activity.InjectActivity;
+import com.kandon.caramelwaffle.diabetes.Activity.SolidMedActivity;
 import com.kandon.caramelwaffle.diabetes.Model.HospitalData;
 import com.kandon.caramelwaffle.diabetes.R;
 
@@ -47,24 +49,28 @@ public class CallAdapter extends RecyclerView.Adapter<CallAdapter.MyViewHolder> 
     private MaterialDialog materialDialog;
     private int loop;
     private int i;
+    boolean isLoad = true;
     private List<String> name = new ArrayList<>();
     private List<String> number = new ArrayList<>();
     private List<String> about = new ArrayList<>();
-    String names,numbers,abouts;
+    String names, numbers, abouts;
 
     public CallAdapter(Context context) {
         // call data
         SharedPreferences info = context.getSharedPreferences("contact", MODE_PRIVATE);
-        loop = info.getInt("i",0);
-        for (i=1;i<=loop;i++){
-            names = "name"+i;
-            numbers = "number"+i;
-            abouts = "about"+i;
+        loop = info.getInt("i", 0);
+        for (i = 1; i <= loop; i++) {
+            names = "name" + i;
+            numbers = "number" + i;
+            abouts = "about" + i;
 
-            name.add(info.getString(names,null));
-            number.add(info.getString(numbers,null));
-            about.add(info.getString(abouts,"null"));
-            mContext = context;
+            if (isLoad){
+                name.add(info.getString(names, "null"));
+                number.add(info.getString(numbers, "null"));
+                about.add(info.getString(abouts, "null"));
+                mContext = context;
+            }
+
         }
     }
 
@@ -77,13 +83,16 @@ public class CallAdapter extends RecyclerView.Adapter<CallAdapter.MyViewHolder> 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
         //Do some things
+        if (!name.get(position).equals("null")){
+
 
         holder.call_name.setText(name.get(position));
         holder.number.setText(number.get(position));
-        if (!about.get(position).equals("null")){
-            holder.about_name.setText("("+about.get(position)+")");
+        if (!about.get(position).equals("null")) {
+            holder.about_name.setText("(" + about.get(position) + ")");
         }
 
+        }
 
         if (position % 10 == 0) {
             holder.layout.setBackgroundColor(Color.parseColor("#EF5350"));
@@ -124,8 +133,39 @@ public class CallAdapter extends RecyclerView.Adapter<CallAdapter.MyViewHolder> 
             public void onClick(View v) {
                 Intent callIntent = new Intent(Intent.ACTION_CALL);
                 callIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                callIntent.setData(Uri.parse("tel:" +number.get(position) ));
+                callIntent.setData(Uri.parse("tel:" + number.get(position)));
                 mContext.startActivity(callIntent);
+            }
+        });
+
+        holder.layout.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                new MaterialDialog.Builder(mContext)
+                        .items(R.array.call_action)
+                        .itemsCallback(new MaterialDialog.ListCallback() {
+                            @Override
+                            public void onSelection(MaterialDialog dialog, View view, int which, CharSequence text) {
+                                if (which == 0) {
+                                    Toasty.info(mContext, "TODO", Toast.LENGTH_SHORT).show();
+                                } else if (which == 1) {
+//                                    name.remove(position);
+//                                    number.remove(position);
+//                                    about.remove(position);
+                                    isLoad = false;
+                                    SharedPreferences.Editor editor = mContext.getSharedPreferences("contact", MODE_PRIVATE).edit();
+                                    editor.remove("name"+(position+1));
+                                    editor.remove("number"+(position+1));
+                                    editor.remove("about"+(position+1));
+                                    editor.putInt("i",loop-1);
+                                    editor.apply();
+
+
+                                }
+                            }
+                        })
+                        .show();
+                return true;
             }
         });
 

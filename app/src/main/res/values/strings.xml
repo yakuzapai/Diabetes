@@ -8,4 +8,9 @@
         <item>ยาเม็ด</item>
         <item>ยาฉีด</item>
     </string-array>
+
+    <string-array name="call_action">
+        <item>แก้ไข</item>
+        <item>ลบ</item>
+    </string-array>
 </resources>

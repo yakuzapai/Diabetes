@@ -118,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
         row3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                startActivity(new Intent(context,AddSugarActivity.class));
             }
         });
 
