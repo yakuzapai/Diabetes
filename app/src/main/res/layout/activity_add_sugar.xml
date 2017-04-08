@@ -23,13 +23,14 @@
     </android.support.design.widget.AppBarLayout>
 
     <CalendarView
-        android:focusable="false"
-        android:clickable="false"
-        android:layout_margin="@dimen/default_magin"
-        android:layout_below="@+id/toolbarlayout"
+        android:visibility="gone"
         android:id="@+id/calendarView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbarlayout"
+        android:layout_margin="@dimen/default_magin"
+        android:clickable="false"
+        android:focusable="false" />
 
 
     <android.support.design.widget.TextInputLayout
@@ -41,21 +42,21 @@
         android:layout_marginRight="@dimen/default_magin">
 
         <EditText
-            android:imeOptions="actionDone"
-            android:inputType="number"
-            android:id="@+id/suger_input"
+            android:id="@+id/sugar_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="ระดับน้ำตาล"
+            android:imeOptions="actionDone"
+            android:inputType="number"
             android:maxLines="1" />
 
     </android.support.design.widget.TextInputLayout>
 
     <Button
         android:id="@+id/sugar_save"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/edt"
-        android:text="บันทึกน้ำตาล"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edt"
+        android:layout_centerHorizontal="true"
+        android:text="บันทึกน้ำตาล" />
 </RelativeLayout>

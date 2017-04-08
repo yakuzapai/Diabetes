@@ -27,6 +27,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.kandon.caramelwaffle.diabetes.R;
 
+import java.util.Calendar;
+
 import es.dmoral.toasty.Toasty;
 
 public class LoginActivity extends AppCompatActivity {
@@ -85,6 +87,7 @@ public class LoginActivity extends AppCompatActivity {
                 .build();
 
         mAuth = FirebaseAuth.getInstance();
+
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
@@ -130,6 +133,10 @@ public class LoginActivity extends AppCompatActivity {
 
                 GoogleSignInAccount account = result.getSignInAccount();
                 firebaseAuthWithGoogle(account);
+//                int currentDay = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
+//                SharedPreferences.Editor editor_t = getSharedPreferences("sugar_last_time", MODE_PRIVATE).edit();
+//                editor_t.putInt("date",currentDay);
+
                 Intent intent = new Intent(LoginActivity.this,Information.class);
                 startActivity(intent);
                 finish();
