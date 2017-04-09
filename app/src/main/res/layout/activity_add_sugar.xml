@@ -23,7 +23,6 @@
     </android.support.design.widget.AppBarLayout>
 
     <CalendarView
-        android:visibility="gone"
         android:id="@+id/calendarView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -59,4 +58,18 @@
         android:layout_below="@+id/edt"
         android:layout_centerHorizontal="true"
         android:text="บันทึกน้ำตาล" />
+
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_margin="@dimen/default_magin"
+        android:src="@drawable/ic_history_white_48dp"
+        app:backgroundTint="@color/colorPrimary"
+        app:fabSize="normal" />
+
+
 </RelativeLayout>

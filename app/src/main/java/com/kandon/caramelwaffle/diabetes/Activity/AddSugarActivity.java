@@ -2,6 +2,7 @@ package com.kandon.caramelwaffle.diabetes.Activity;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -11,21 +12,26 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.kandon.caramelwaffle.diabetes.Model.Sugar;
 import com.kandon.caramelwaffle.diabetes.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 import es.dmoral.toasty.Toasty;
+import io.realm.Realm;
+import io.realm.RealmResults;
 
 public class AddSugarActivity extends AppCompatActivity {
-    Toolbar toolbar;
-    EditText sugar_input;
-    Button sugar_save;
-    Boolean isNextDay = false;
-    int i;
-    Context mContext = AddSugarActivity.this;
+    private Realm realm;
+    private Toolbar toolbar;
+    private EditText sugar_input;
+    private Button sugar_save;
+    private Boolean isNextDay = false;
+    private Context mContext = AddSugarActivity.this;
+    private FloatingActionButton fab;
     int loop;
+    int i;
 
     @Override
     protected void onStart() {
@@ -37,14 +43,16 @@ public class AddSugarActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_sugar);
+        realm = Realm.getDefaultInstance();
         initInstances();
         setInstances();
     }
 
     private void initInstances() {
-        toolbar = (Toolbar)findViewById(R.id.toolbar);
-        sugar_input = (EditText)findViewById(R.id.sugar_input);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        sugar_input = (EditText) findViewById(R.id.sugar_input);
         sugar_save = (Button) findViewById(R.id.sugar_save);
+        fab = (FloatingActionButton)findViewById(R.id.fab);
     }
 
     private void setInstances() {
@@ -55,16 +63,17 @@ public class AddSugarActivity extends AppCompatActivity {
 
         final int currentDay = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
         final int currentMonth = Calendar.getInstance().get(Calendar.MONTH);
+        final int currentYear = Calendar.getInstance().get(Calendar.YEAR);
         SharedPreferences info = getSharedPreferences("sugar_last_time", MODE_PRIVATE);
-        final int lastday = info.getInt("date",0);
-        Toasty.info(mContext,"Last day : "+ lastday,Toast.LENGTH_LONG).show();
+        final int lastday = info.getInt("date", 0);
+        Toasty.info(mContext, "Last day : " + lastday, Toast.LENGTH_LONG).show();
         SharedPreferences info2 = getSharedPreferences("sugar_value", MODE_PRIVATE);
-        loop = info2.getInt("loop",0);
-        if (lastday!=currentDay){
+        loop = info2.getInt("loop", 0);
+        if (lastday != currentDay) {
             isNextDay = true;
             SharedPreferences.Editor editor = getSharedPreferences("sugar_last_time", MODE_PRIVATE).edit();
-            editor.putInt("i",0);
-            editor.putInt("date",currentDay);
+            editor.putInt("i", 0);
+            editor.putInt("date", currentDay);
             editor.apply();
 
         }
@@ -77,7 +86,7 @@ public class AddSugarActivity extends AppCompatActivity {
                 if (!sugar_input.getText().toString().equals("")) {
                     // get old i values
                     SharedPreferences eds = getSharedPreferences("sugar_last_time", MODE_PRIVATE);
-                    i =  eds.getInt("i", 0);
+                    i = eds.getInt("i", 0);
                     i++;
                     // set new i values
                     SharedPreferences.Editor editor = getSharedPreferences("sugar_last_time", MODE_PRIVATE).edit();
@@ -93,29 +102,57 @@ public class AddSugarActivity extends AppCompatActivity {
                     Toasty.success(mContext, "บันทึกข้อมูลประจำวันที่ " + formattedDate + "\n ครั้งที่ " + newi, Toast.LENGTH_LONG).show();
 
                     // save sugar
-                    if (isNextDay){
+                    if (isNextDay) {
                         loop++;
-                        Toasty.info(mContext,loop+"",Toast.LENGTH_SHORT).show();
+                        Toasty.info(mContext, loop + "", Toast.LENGTH_SHORT).show();
                         SharedPreferences.Editor editor_sugar = getSharedPreferences("sugar_value", MODE_PRIVATE).edit();
-                        editor_sugar.putInt("loop",loop);
+                        editor_sugar.putInt("loop", loop);
                         editor_sugar.apply();
                         isNextDay = false;
                     }
 
+                    realm.executeTransaction(new Realm.Transaction() {
+                        @Override
+                        public void execute(Realm realm) {
+
+                            Sugar sugar = realm.createObject(Sugar.class);
+                            sugar.setId(getNextKey());
+                            sugar.setDate(currentDay + "/" + currentMonth + "/" + currentYear);
+                            sugar.setSugarValue(Integer.parseInt(sugar_input.getText().toString()));
+
+                        }
+                    });
+
                     SharedPreferences.Editor editor_sugar = getSharedPreferences("sugar_value", MODE_PRIVATE).edit();
-                    editor_sugar.putString("date"+"time"+loop,newi+"");
-                    editor_sugar.putString("date"+loop,currentDay+"/"+currentMonth);
-                    editor_sugar.putString("sugar"+currentDay+"/"+currentMonth+newi,sugar_input.getText().toString());
+                    editor_sugar.putString("date" + "time" + loop, newi + "");
+                    editor_sugar.putString("date" + loop, currentDay + "/" + currentMonth);
+                    editor_sugar.putString("sugar" + currentDay + "/" + currentMonth + newi, sugar_input.getText().toString());
                     editor_sugar.apply();
                     sugar_input.setText("");
 
-                }else {
-                    Toasty.error(mContext,"กรุณากรอกข้อมูล",Toast.LENGTH_SHORT).show();
+                } else {
+                    Toasty.error(mContext, "กรุณากรอกข้อมูล", Toast.LENGTH_SHORT).show();
                 }
 
             }
         });
 
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toasty.info(mContext,"click",Toast.LENGTH_SHORT).show();
+            }
+        });
+
+    }
+
+    public int getNextKey() {
+        try {
+            return realm.where(Sugar.class).max("id").intValue() + 1;
+        } catch (ArrayIndexOutOfBoundsException e) {
+            return 0;
+        }
     }
 
 
@@ -129,4 +166,13 @@ public class AddSugarActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        realm.close();
+    }
+
+
+
 }
