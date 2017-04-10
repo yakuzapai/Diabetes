@@ -35,7 +35,8 @@
         <activity android:name=".Activity.RefActivity" />
         <activity android:name=".Activity.FoodActivity" />
         <activity android:name=".Activity.AddSugarActivity" />
-        <activity android:name=".Activity.HistoryActivity"></activity>
+        <activity android:name=".Activity.HistoryActivity" />
+        <activity android:name=".Activity.GraphActivity"></activity>
     </application>
 
 </manifest>

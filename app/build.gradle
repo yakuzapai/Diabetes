@@ -39,5 +39,6 @@ dependencies {
     compile 'com.afollestad.material-dialogs:core:0.9.4.1'
     compile 'pub.devrel:easypermissions:0.3.0'
     compile 'com.jaredrummler:material-spinner:1.1.0'
+    compile 'com.github.PhilJay:MPAndroidChart:v3.0.0-beta1'
 }
 apply plugin: 'com.google.gms.google-services'

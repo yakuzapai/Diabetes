@@ -1,6 +1,7 @@
 package com.kandon.caramelwaffle.diabetes.Activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -40,6 +41,12 @@ public class AddSugarActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        realm = Realm.getDefaultInstance();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_sugar);
@@ -66,7 +73,7 @@ public class AddSugarActivity extends AppCompatActivity {
         final int currentYear = Calendar.getInstance().get(Calendar.YEAR);
         SharedPreferences info = getSharedPreferences("sugar_last_time", MODE_PRIVATE);
         final int lastday = info.getInt("date", 0);
-        Toasty.info(mContext, "Last day : " + lastday, Toast.LENGTH_LONG).show();
+//        Toasty.info(mContext, "Last day : " + lastday, Toast.LENGTH_LONG).show();
         SharedPreferences info2 = getSharedPreferences("sugar_value", MODE_PRIVATE);
         loop = info2.getInt("loop", 0);
         if (lastday != currentDay) {
@@ -141,7 +148,7 @@ public class AddSugarActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toasty.info(mContext,"click",Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(mContext,HistoryActivity.class));
             }
         });
 

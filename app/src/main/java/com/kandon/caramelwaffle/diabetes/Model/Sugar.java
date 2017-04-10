@@ -12,7 +12,7 @@ import io.realm.annotations.Required;
 public class Sugar extends RealmObject {
     @PrimaryKey
     int id;
-    int sugarValue;
+    float sugarValue;
     @Required
     String date;
 
@@ -24,11 +24,11 @@ public class Sugar extends RealmObject {
         this.id = id;
     }
 
-    public int getSugarValue() {
+    public float getSugarValue() {
         return sugarValue;
     }
 
-    public void setSugarValue(int sugarValue) {
+    public void setSugarValue(float sugarValue) {
         this.sugarValue = sugarValue;
     }
 

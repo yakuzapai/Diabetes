@@ -44,7 +44,7 @@
             android:id="@+id/sugar_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="ระดับน้ำตาล"
+            android:hint="ระดับน้ำตาล (mg/dl)"
             android:imeOptions="actionDone"
             android:inputType="number"
             android:maxLines="1" />
