@@ -2,33 +2,39 @@ package com.kandon.caramelwaffle.diabetes.Activity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.icu.util.Calendar;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CalendarView;
-import android.widget.Toast;
+
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.kandon.caramelwaffle.diabetes.Model.Sugar;
 import com.kandon.caramelwaffle.diabetes.R;
+import com.prolificinteractive.materialcalendarview.CalendarDay;
+import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
+import com.prolificinteractive.materialcalendarview.OnDateSelectedListener;
 
-import es.dmoral.toasty.Toasty;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 import io.realm.Realm;
 import io.realm.RealmQuery;
 import io.realm.RealmResults;
 
 public class HistoryActivity extends AppCompatActivity {
     private Toolbar toolbar;
-    private CalendarView calendarView;
     private Realm realm;
     private Context mContext = HistoryActivity.this;
     private String str = "";
     private int i=0;
     private Button graph;
+    private MaterialCalendarView calendarView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,8 +47,8 @@ public class HistoryActivity extends AppCompatActivity {
 
     private void initInstances() {
         toolbar = (Toolbar)findViewById(R.id.toolbar);
-        calendarView = (CalendarView)findViewById(R.id.calendarView);
         graph = (Button)findViewById(R.id.graph);
+        calendarView = (MaterialCalendarView)findViewById(R.id.calendarView);
     }
 
     private void setInstances() {
@@ -51,14 +57,18 @@ public class HistoryActivity extends AppCompatActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+        Calendar c = Calendar.getInstance();
+        SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
+        calendarView.setSelectedDate(c.getTime());
+
+        calendarView.setOnDateChangedListener(new OnDateSelectedListener() {
             @Override
-            public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
+            public void onDateSelected(@NonNull MaterialCalendarView widget, @NonNull CalendarDay date, boolean selected) {
                 str = "";
-                RealmResults<Sugar> listSugar = getDateSugar(year,month,dayOfMonth);
+                RealmResults<Sugar> listSugar = getDateSugar(date.getYear(),date.getMonth(),date.getDay());
                 for (Sugar sugar : listSugar) {
                     i++;
-                    str += "\n ระดับน้ำตาลครั้งที่ "+i+" : "+sugar.getSugarValue()+" mg/dl";
+                    str += "\n ระดับน้ำตาลครั้งที่ "+i+" : "+sugar.getSugarValue()+" mg/dL";
                 }
 
                 if (str.equals("")){
@@ -67,7 +77,7 @@ public class HistoryActivity extends AppCompatActivity {
 
 
                 new MaterialDialog.Builder(mContext)
-                        .title("ข้อมูลประจำวันที่ " + dayOfMonth+"/"+month+"/"+year)
+                        .title("ข้อมูลประจำวันที่ " + date.getYear()+"/"+date.getMonth()+"/"+date.getDay())
                         .content(str)
                         .cancelable(true)
                         .positiveText("ตกลง")
@@ -75,7 +85,9 @@ public class HistoryActivity extends AppCompatActivity {
 
                 i = 0;
             }
+
         });
+
 
 
         graph.setOnClickListener(new View.OnClickListener() {
@@ -99,6 +111,12 @@ public class HistoryActivity extends AppCompatActivity {
 
     public RealmResults<Sugar> getDateSugar(int y, int m, int d) {
         return realm.where(Sugar.class).equalTo("date",d + "/" + m + "/" + y).findAll();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        realm = Realm.getDefaultInstance();
     }
 
     @Override

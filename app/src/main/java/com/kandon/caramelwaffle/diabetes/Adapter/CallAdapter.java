@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.net.Uri;
+import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -19,6 +20,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.bumptech.glide.Glide;
 import com.google.firebase.database.ChildEventListener;
@@ -29,7 +31,9 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.kandon.caramelwaffle.diabetes.Activity.InjectActivity;
 import com.kandon.caramelwaffle.diabetes.Activity.SolidMedActivity;
+import com.kandon.caramelwaffle.diabetes.Model.Contact;
 import com.kandon.caramelwaffle.diabetes.Model.HospitalData;
+import com.kandon.caramelwaffle.diabetes.Model.Sugar;
 import com.kandon.caramelwaffle.diabetes.R;
 
 import java.util.ArrayList;
@@ -37,6 +41,9 @@ import java.util.List;
 import java.util.Map;
 
 import es.dmoral.toasty.Toasty;
+import io.realm.DynamicRealm;
+import io.realm.Realm;
+import io.realm.RealmResults;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -50,28 +57,28 @@ public class CallAdapter extends RecyclerView.Adapter<CallAdapter.MyViewHolder> 
     private int loop;
     private int i;
     boolean isLoad = true;
+    private List<Integer> id = new ArrayList<>();
     private List<String> name = new ArrayList<>();
     private List<String> number = new ArrayList<>();
     private List<String> about = new ArrayList<>();
+    private Realm realm;
+    private RealmResults<Contact> listContact;
+    private RealmResults<Contact> contact_del;
     String names, numbers, abouts;
 
     public CallAdapter(Context context) {
         // call data
-        SharedPreferences info = context.getSharedPreferences("contact", MODE_PRIVATE);
-        loop = info.getInt("i", 0);
-        for (i = 1; i <= loop; i++) {
-            names = "name" + i;
-            numbers = "number" + i;
-            abouts = "about" + i;
-
-            if (isLoad){
-                name.add(info.getString(names, "null"));
-                number.add(info.getString(numbers, "null"));
-                about.add(info.getString(abouts, "null"));
-                mContext = context;
-            }
-
+        mContext = context;
+        realm = Realm.getDefaultInstance();
+        listContact = getContact();
+        for (Contact contact : listContact) {
+            id.add(contact.getId());
+            name.add(contact.getName());
+            number.add(contact.getNumber());
+            about.add(contact.getAbout());
         }
+
+
     }
 
     @Override
@@ -83,16 +90,14 @@ public class CallAdapter extends RecyclerView.Adapter<CallAdapter.MyViewHolder> 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
         //Do some things
-        if (!name.get(position).equals("null")){
 
 
         holder.call_name.setText(name.get(position));
         holder.number.setText(number.get(position));
-        if (!about.get(position).equals("null")) {
+        if (!about.get(position).equals("")) {
             holder.about_name.setText("(" + about.get(position) + ")");
         }
 
-        }
 
         if (position % 10 == 0) {
             holder.layout.setBackgroundColor(Color.parseColor("#EF5350"));
@@ -141,30 +146,31 @@ public class CallAdapter extends RecyclerView.Adapter<CallAdapter.MyViewHolder> 
         holder.layout.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
+
                 new MaterialDialog.Builder(mContext)
-                        .items(R.array.call_action)
-                        .itemsCallback(new MaterialDialog.ListCallback() {
+                        .title("ลบข้อมูล")
+                        .content("ต้องการลบข้อมูลหรือไม่")
+                        .positiveText("ตกลง")
+                        .negativeText("ยกเลิก")
+                        .cancelable(true)
+                        .onPositive(new MaterialDialog.SingleButtonCallback() {
                             @Override
-                            public void onSelection(MaterialDialog dialog, View view, int which, CharSequence text) {
-                                if (which == 0) {
-                                    Toasty.info(mContext, "TODO", Toast.LENGTH_SHORT).show();
-                                } else if (which == 1) {
-//                                    name.remove(position);
-//                                    number.remove(position);
-//                                    about.remove(position);
-                                    isLoad = false;
-                                    SharedPreferences.Editor editor = mContext.getSharedPreferences("contact", MODE_PRIVATE).edit();
-                                    editor.remove("name"+(position+1));
-                                    editor.remove("number"+(position+1));
-                                    editor.remove("about"+(position+1));
-                                    editor.putInt("i",loop-1);
-                                    editor.apply();
+                            public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
 
-
-                                }
+                                realm.executeTransaction(new Realm.Transaction() {
+                                    @Override
+                                    public void execute(Realm realm) {
+                                        contact_del = getContactByID(id.get(position));
+                                        for (Contact contact : contact_del) {
+                                            contact.deleteFromRealm();
+                                        }
+                                    }
+                                });
+                                notifyItemRemoved(position);
                             }
-                        })
-                        .show();
+                        }).show();
+
+
                 return true;
             }
         });
@@ -173,7 +179,7 @@ public class CallAdapter extends RecyclerView.Adapter<CallAdapter.MyViewHolder> 
 
     @Override
     public int getItemCount() {
-        return loop;
+        return getContact().size();
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
@@ -189,5 +195,13 @@ public class CallAdapter extends RecyclerView.Adapter<CallAdapter.MyViewHolder> 
             number = (TextView) itemView.findViewById(R.id.number);
             layout = (RelativeLayout) itemView.findViewById(R.id.item_layout);
         }
+    }
+
+    public RealmResults<Contact> getContact() {
+        return realm.where(Contact.class).findAll();
+    }
+
+    public RealmResults<Contact> getContactByID(int ids) {
+        return realm.where(Contact.class).equalTo("id",ids).findAll();
     }
 }

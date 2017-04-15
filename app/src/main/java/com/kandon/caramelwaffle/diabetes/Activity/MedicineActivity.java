@@ -20,6 +20,8 @@ import com.kandon.caramelwaffle.diabetes.R;
 
 import es.dmoral.toasty.Toasty;
 
+import static android.R.attr.numColumns;
+
 public class MedicineActivity extends AppCompatActivity {
     Toolbar toolbar ;
     FloatingActionButton floatingActionButton;

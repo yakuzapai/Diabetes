@@ -24,24 +24,35 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <CalendarView
+    <com.prolificinteractive.materialcalendarview.MaterialCalendarView
+        android:layout_below="@+id/appbar"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/calendarView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/appbar"
-        android:layout_centerHorizontal="true">
+        app:mcv_allowClickDaysOutsideCurrentMonth="false"
+        app:mcv_showOtherDates="none"
+        app:mcv_selectionColor="@color/colorAccent"
+        />
 
-    </CalendarView>
-
+    <TextView
+        android:text="กรุณาเลือกวันที่ที่ต้องการดูบันทึกคาน้ำตาล"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/calendarView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
     <Button
-        android:background="@drawable/graph"
+        android:layout_margin="@dimen/default_magin"
+        android:text="กราฟแสดงค่าน้ำตาล"
+        android:layout_alignParentBottom="true"
         android:id="@+id/graph"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_below="@id/calendarView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         />
+
+
 
 
 </RelativeLayout>

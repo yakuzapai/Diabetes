@@ -223,6 +223,7 @@
                 android:layout_marginRight="@dimen/default_magin">
 
                 <EditText
+                    android:maxLength="3"
                     android:id="@+id/weight"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -241,6 +242,7 @@
                 android:layout_marginRight="@dimen/default_magin">
 
                 <EditText
+                    android:maxLength="3"
                     android:id="@+id/height"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -447,7 +449,7 @@
                     android:id="@+id/BloodSugar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Blood sugar (mg/dl)"
+                    android:hint="Blood sugar (mg/dL)"
                     android:inputType="number"
                     android:maxLines="1" />
 

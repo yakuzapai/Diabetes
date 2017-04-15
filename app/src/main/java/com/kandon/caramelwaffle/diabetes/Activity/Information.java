@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
@@ -23,6 +24,8 @@ import android.widget.Toast;
 
 import java.util.Calendar;
 
+import com.afollestad.materialdialogs.DialogAction;
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -282,22 +285,36 @@ public class Information extends AppCompatActivity implements DatePickerDialog.O
                         && !tv_break.getText().toString().equals("")&& !tv_lanch.getText().toString().equals("")
                         && !tv_dinner.getText().toString().equals("")
                         ) {
-                    saveInformation();
 
-                    Toasty.success(context, "Information saved", Toast.LENGTH_LONG).show();
+                    new MaterialDialog.Builder(context)
+                            .title("บันทึกข้อมูล")
+                            .content("ต้องการบันทึกข้อมูลหรือไม่")
+                            .positiveText("ตกลง")
+                            .negativeText("ยกเลิก")
+                            .cancelable(true)
+                            .onPositive(new MaterialDialog.SingleButtonCallback() {
+                                @Override
+                                public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                                    saveInformation();
 
-                    // check isSave
-                    SharedPreferences.Editor editor = getSharedPreferences("information_save", MODE_PRIVATE).edit();
-                    editor.putBoolean("isSave", true);
-                    editor.apply();
+                                    Toasty.success(context, "Information saved", Toast.LENGTH_LONG).show();
 
-                    // save to firebase
-                   // mUserRef.push().setValue(user);
-                    mUserRef.child( firebaseAuth.getCurrentUser().getUid()).setValue(user);
+                                    // check isSave
+                                    SharedPreferences.Editor editor = getSharedPreferences("information_save", MODE_PRIVATE).edit();
+                                    editor.putBoolean("isSave", true);
+                                    editor.apply();
 
-                    Intent intent = new Intent(context, MainActivity.class);
-                    startActivity(intent);
-                    finish();
+                                    // save to firebase
+                                    // mUserRef.push().setValue(user);
+                                    mUserRef.child( firebaseAuth.getCurrentUser().getUid()).setValue(user);
+
+                                    Intent intent = new Intent(context, MainActivity.class);
+                                    startActivity(intent);
+                                    finish();
+                                }
+                            })
+                            .show();
+
                 } else {
                     Toasty.error(context, "Please input all information", Toast.LENGTH_SHORT).show();
                 }

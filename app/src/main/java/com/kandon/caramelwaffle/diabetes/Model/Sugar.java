@@ -1,5 +1,7 @@
 package com.kandon.caramelwaffle.diabetes.Model;
 
+import java.util.Date;
+
 import io.realm.RealmObject;
 import io.realm.RealmResults;
 import io.realm.annotations.PrimaryKey;

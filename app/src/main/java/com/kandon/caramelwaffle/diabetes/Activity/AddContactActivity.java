@@ -11,9 +11,12 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.kandon.caramelwaffle.diabetes.Model.Contact;
+import com.kandon.caramelwaffle.diabetes.Model.Sugar;
 import com.kandon.caramelwaffle.diabetes.R;
 
 import es.dmoral.toasty.Toasty;
+import io.realm.Realm;
 
 public class AddContactActivity extends AppCompatActivity {
     Toolbar toolbar;
@@ -21,11 +24,13 @@ public class AddContactActivity extends AppCompatActivity {
     EditText name;
     EditText number;
     EditText about;
+    private Realm realm;
     int i;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_contact);
+        realm = Realm.getDefaultInstance();
         innitInstances();
     }
 
@@ -45,6 +50,20 @@ public class AddContactActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (!name.getText().toString().equals("")&&!number.getText().toString().equals("")){
+
+
+                    realm.executeTransaction(new Realm.Transaction() {
+                        @Override
+                        public void execute(Realm realm) {
+
+                            Contact contact = realm.createObject(Contact.class);
+                            contact.setId(getNextKey());
+                            contact.setName(name.getText().toString());
+                            contact.setAbout(about.getText().toString());
+                            contact.setNumber(number.getText().toString());
+
+                        }
+                    });
 
                     SharedPreferences info = getSharedPreferences("contact", MODE_PRIVATE);
                     i = info.getInt("i",0);
@@ -84,5 +103,26 @@ public class AddContactActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public int getNextKey() {
+        try {
+            return realm.where(Contact.class).max("id").intValue() + 1;
+        } catch (ArrayIndexOutOfBoundsException e) {
+            return 0;
+        }
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        realm = Realm.getDefaultInstance();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        realm.close();
     }
 }

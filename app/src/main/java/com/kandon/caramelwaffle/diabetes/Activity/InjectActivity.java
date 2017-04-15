@@ -3,6 +3,7 @@ package com.kandon.caramelwaffle.diabetes.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -11,48 +12,45 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.afollestad.materialdialogs.DialogAction;
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.jaredrummler.materialspinner.MaterialSpinner;
+import com.kandon.caramelwaffle.diabetes.Model.Medicine;
 import com.kandon.caramelwaffle.diabetes.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import es.dmoral.toasty.Toasty;
+import io.realm.Realm;
 
 public class InjectActivity extends AppCompatActivity {
     Toolbar toolbar;
     MaterialSpinner spinner_name;
     MaterialSpinner spinner_type;
-    MaterialSpinner spinner_size;
+    MaterialSpinner spinner_time;
+    EditText med_size;
     ImageView med_img;
-    CheckBox checkbox_bb;
-    CheckBox checkbox_bl;
-    CheckBox checkbox_bd;
-    CheckBox checkbox_ab;
-    CheckBox checkbox_al;
-    CheckBox checkbox_ad;
     Context mContext = InjectActivity.this;
     List<String> name = new ArrayList<>();
     int count = 0;
+    String qty ;
     String medNames;
     String medTypes;
-    String medQty = "500 ml";
-    Boolean bb = false;
-    Boolean bl = false;
-    Boolean bd = false;
-    Boolean ab = false;
-    Boolean al = false;
-    Boolean ad = false;
     int positioning;
+    String times ="ก่อนอาหารเช้า";
     Button btn_save;
+    private Realm realm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inject);
+        realm = Realm.getDefaultInstance();
         InitInstances();
         setInstances();
     }
@@ -62,13 +60,8 @@ public class InjectActivity extends AppCompatActivity {
         med_img = (ImageView) findViewById(R.id.med_img);
         spinner_name = (MaterialSpinner) findViewById(R.id.spinner_name);
         spinner_type = (MaterialSpinner) findViewById(R.id.spinner_type);
-        spinner_size = (MaterialSpinner) findViewById(R.id.spinner_size);
-        checkbox_bb = (CheckBox) findViewById(R.id.checkbox_bb);
-        checkbox_bl = (CheckBox) findViewById(R.id.checkbox_bl);
-        checkbox_bd = (CheckBox) findViewById(R.id.checkbox_bd);
-        checkbox_ab = (CheckBox) findViewById(R.id.checkbox_ab);
-        checkbox_al = (CheckBox) findViewById(R.id.checkbox_al);
-        checkbox_ad = (CheckBox) findViewById(R.id.checkbox_ad);
+        spinner_time = (MaterialSpinner) findViewById(R.id.spinner_time);
+        med_size = (EditText)findViewById(R.id.med_size);
         btn_save = (Button) findViewById(R.id.btn_save);
     }
 
@@ -97,7 +90,6 @@ public class InjectActivity extends AppCompatActivity {
                     medTypes = "Victoza ()";
                     spinner_type.setItems("Victoza ()");
                 }
-                spinner_size.setItems("500 ml","1000 ml");
                 count++;
             }
         });
@@ -108,105 +100,71 @@ public class InjectActivity extends AppCompatActivity {
             }
         });
 
-        spinner_size.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener() {
+        spinner_time.setItems("ก่อนอาหารเช้า","ก่อนอาหารกลางวัน","ก่อนอาหารเย็น","หลังอาหารเช้า","หลังอาหารกลางวัน","หลังอาหารเย็น","ก่อนนอน");
+        spinner_time.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener() {
             @Override
             public void onItemSelected(MaterialSpinner view, int position, long id, Object item) {
-                medQty = item.toString();
+                times = item.toString();
             }
         });
 
-        checkbox_bb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked){
-                    bb = true;
-                }else {
-                    bb = false;
-                }
-            }
-        });
 
-        checkbox_bl.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked){
-                    bl = true;
-                }else {
-                    bl = false;
-                }
-            }
-        });
-
-        checkbox_bd.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked){
-                    bd = true;
-                }else {
-                    bd = false;
-                }
-            }
-        });
-
-        checkbox_ab.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked){
-                    ab = true;
-                }else {
-                    ab = false;
-                }
-            }
-        });
-
-        checkbox_al.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked){
-                    al = true;
-                }else {
-                    al = false;
-                }
-            }
-        });
-
-        checkbox_ad.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked){
-                    ad = true;
-                }else {
-                    ad = false;
-                }
-            }
-        });
 
         btn_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (positioning!=0){
-                    SharedPreferences info = getSharedPreferences("medicine", MODE_PRIVATE);
-                    int i = info.getInt("i",0);
-                    i++;
-                    SharedPreferences.Editor editor = getSharedPreferences("medicine", MODE_PRIVATE).edit();
-                    editor.putInt("i",i);
-                    editor.putString("medNames"+i,medNames);
-                    editor.putString("medTypes"+i,medTypes);
-                    editor.putString("medKind"+i,"ยาฉีด");
-                    editor.putString("medQty"+i,medQty);
-                    editor.putBoolean("bb"+i,bb);
-                    editor.putBoolean("bl"+i,bl);
-                    editor.putBoolean("bd"+i,bd);
-                    editor.putBoolean("ab"+i,ab);
-                    editor.putBoolean("al"+i,al);
-                    editor.putBoolean("ad"+i,ad);
-                    editor.apply();
+                if (positioning!=0&&!times.equals("")&&!med_size.getText().toString().equals("")) {
+                    qty = med_size.getText().toString() + " เปอร์เซ็น/มิลลิลิตร";
 
-                    Intent returnIntent = new Intent();
-                    setResult(RESULT_OK, returnIntent);
-                    finish();
+                    new MaterialDialog.Builder(mContext)
+                            .title("บันทึกข้อมูล")
+                            .content("ต้องการบันทึกข้อมูลหรือไม่")
+                            .positiveText("ตกลง")
+                            .negativeText("ยกเลิก")
+                            .onPositive(new MaterialDialog.SingleButtonCallback() {
+                                @Override
+                                public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
 
-                    Toasty.success(mContext,"บันทึกข้อมูลเรียบร้อย", Toast.LENGTH_SHORT).show();
+                                    realm.executeTransaction(new Realm.Transaction() {
+                                        @Override
+                                        public void execute(Realm realm) {
+
+                                            Medicine medicine = realm.createObject(Medicine.class);
+                                            medicine.setId(getNextKey());
+                                            medicine.setMedName(medNames);
+                                            medicine.setMedType(medTypes);
+                                            medicine.setMedKind("ยาฉีด");
+                                            medicine.setMedQty(qty);
+                                            medicine.setMedTime(times);
+
+
+                                        }
+                                    });
+
+
+                                    SharedPreferences info = getSharedPreferences("medicine", MODE_PRIVATE);
+                                    int i = info.getInt("i",0);
+                                    i++;
+                                    SharedPreferences.Editor editor = getSharedPreferences("medicine", MODE_PRIVATE).edit();
+                                    editor.putInt("i",i);
+                                    editor.putString("medNames"+i,medNames);
+                                    editor.putString("medTypes"+i,medTypes);
+                                    editor.putString("medKind"+i,"ยาฉีด");
+                                    editor.putString("medQty" + i, qty);
+
+                                    editor.putString("time" + i, times);
+                                    editor.apply();
+
+                                    Intent returnIntent = new Intent();
+                                    setResult(RESULT_OK, returnIntent);
+                                    finish();
+
+                                    Toasty.success(mContext,"บันทึกข้อมูลเรียบร้อย", Toast.LENGTH_SHORT).show();
+                                }
+                            })
+                            .cancelable(true)
+                            .show();
+
                 }else {
                     Toasty.warning(mContext,"กรุณาเลือกยาให้ครบถ้วน",Toast.LENGTH_SHORT).show();
                 }
@@ -216,8 +174,8 @@ public class InjectActivity extends AppCompatActivity {
 
     private void addMedName() {
         name.add("ชื่อยา");
-        name.add("Exenatide");
-        name.add("Liraglutide");
+        name.add("อีเซนาไทด์(Exenatide)");
+        name.add("ลิรากลูไทด์(Liraglutide)");
     }
 
     @Override
@@ -229,5 +187,25 @@ public class InjectActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public int getNextKey() {
+        try {
+            return realm.where(Medicine.class).max("id").intValue() + 1;
+        } catch (ArrayIndexOutOfBoundsException e) {
+            return 0;
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        realm = Realm.getDefaultInstance();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        realm.close();
     }
 }

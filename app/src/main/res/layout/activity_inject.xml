@@ -64,90 +64,47 @@
                 android:hint="ชื่อการค้า"
                 android:textSize="16sp" />
 
-            <com.jaredrummler.materialspinner.MaterialSpinner
+
+            <android.support.design.widget.TextInputLayout
+                android:background="@android:color/white"
                 android:id="@+id/spinner_size"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/spinner_time"
+                android:layout_marginLeft="@dimen/default_magin"
+                android:layout_marginRight="@dimen/default_magin">
+
+                <EditText
+                    android:id="@+id/med_size"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="ขนาดยา (เปอร์เซ็น/มิลลิลิตร)"
+                    android:inputType="number"
+                    android:maxLength="5"
+                    android:maxLines="1" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <com.jaredrummler.materialspinner.MaterialSpinner
+                android:id="@+id/spinner_time"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/spinner_type"
                 android:layout_marginLeft="@dimen/default_magin"
                 android:layout_marginRight="@dimen/default_magin"
                 android:layout_marginTop="@dimen/default_magin"
-                android:hint="ขนาดยา"
+                android:hint="เวลารับประทานยา"
                 android:textSize="16sp" />
 
-            <CheckBox
-                android:id="@+id/checkbox_bb"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/spinner_size"
-                android:layout_marginLeft="@dimen/default_magin"
-                android:layout_marginTop="@dimen/default_magin"
-                android:text="ก่อนอาหารเช้า"
-                android:textSize="16sp" />
-
-            <CheckBox
-                android:id="@+id/checkbox_bl"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/checkbox_bb"
-                android:layout_marginLeft="@dimen/default_magin"
-                android:layout_marginTop="@dimen/default_magin"
-                android:text="ก่อนอาหารกลางวัน"
-                android:textSize="16sp" />
-
-            <CheckBox
-                android:id="@+id/checkbox_bd"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/checkbox_bl"
-                android:layout_marginLeft="@dimen/default_magin"
-                android:layout_marginTop="@dimen/default_magin"
-                android:text="ก่อนอาหารเย็น"
-                android:textSize="16sp" />
-
-
-            <CheckBox
-
-                android:id="@+id/checkbox_ab"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/spinner_size"
-                android:layout_marginLeft="32dp"
-                android:layout_marginTop="@dimen/default_magin"
-                android:layout_toRightOf="@+id/checkbox_bb"
-                android:text="หลังอาหารเช้า"
-                android:textSize="16sp" />
-
-            <CheckBox
-                android:id="@+id/checkbox_al"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/checkbox_bb"
-                android:layout_marginLeft="32dp"
-                android:layout_marginTop="@dimen/default_magin"
-                android:layout_toRightOf="@+id/checkbox_bb"
-                android:text="หลังอาหารกลางวัน"
-                android:textSize="16sp" />
-
-            <CheckBox
-                android:id="@+id/checkbox_ad"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/checkbox_bl"
-                android:layout_marginLeft="32dp"
-                android:layout_marginTop="@dimen/default_magin"
-                android:layout_toRightOf="@+id/checkbox_bb"
-                android:text="หลังอาหารเย็น"
-                android:textSize="16sp" />
 
             <Button
                 android:id="@+id/btn_save"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/checkbox_bd"
-                android:layout_centerHorizontal="true"
+                android:text="บันทึก"
                 android:layout_marginTop="@dimen/default_magin"
-                android:text="บันทึก" />
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/spinner_size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
 
 
         </RelativeLayout>

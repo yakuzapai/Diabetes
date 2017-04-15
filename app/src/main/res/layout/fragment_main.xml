@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#EF5350"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <android.support.design.widget.FloatingActionButton
@@ -25,388 +26,412 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/profile_image"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="32dp"
-                android:src="@drawable/profile" />
-
-            <TextView
-                android:id="@+id/user_display_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/profile_image"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="@dimen/default_magin"
-                android:text="USER"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/tv1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/user_display_name"
-                android:layout_marginLeft="@dimen/default_magin"
-                android:layout_marginTop="32dp"
-                android:freezesText="true"
-                android:text="User's Information"
-                android:textSize="20sp" />
-
-            <TextView
-                android:id="@+id/tv2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tv1"
-                android:layout_marginLeft="@dimen/default_magin"
-                android:layout_marginTop="@dimen/default_magin"
-                android:freezesText="true"
-                android:text="ชื่อ-สกุล : "
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/name"
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tv1"
-                android:layout_marginLeft="@dimen/default_magin"
-                android:layout_marginTop="@dimen/default_magin"
-                android:layout_toRightOf="@+id/tv2"
-                android:ellipsize="end"
-                android:freezesText="true"
-                android:text=""
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/tv3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tv2"
-                android:layout_marginLeft="@dimen/default_magin"
-                android:layout_marginTop="@dimen/default_magin"
-                android:freezesText="true"
-                android:text="วันเดือนปีเกิด : "
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/dob"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tv2"
-                android:layout_marginLeft="@dimen/default_magin"
-                android:layout_marginTop="@dimen/default_magin"
-                android:layout_toRightOf="@+id/tv3"
-                android:ellipsize="end"
-                android:freezesText="true"
-                android:text=""
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/tv4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tv3"
-                android:layout_marginLeft="@dimen/default_magin"
-                android:layout_marginTop="@dimen/default_magin"
-                android:freezesText="true"
-                android:text="อายุ : "
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/age"
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tv3"
-                android:layout_marginLeft="@dimen/default_magin"
-                android:layout_marginTop="@dimen/default_magin"
-                android:layout_toRightOf="@+id/tv4"
-                android:ellipsize="end"
-                android:freezesText="true"
-                android:text=""
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/tv5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tv4"
-                android:layout_marginLeft="@dimen/default_magin"
-                android:layout_marginTop="@dimen/default_magin"
-                android:freezesText="true"
-                android:text="เพศ : "
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/gender"
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tv4"
-                android:layout_marginLeft="@dimen/default_magin"
-                android:layout_marginTop="@dimen/default_magin"
-                android:layout_toRightOf="@+id/tv5"
-                android:ellipsize="end"
-                android:freezesText="true"
-                android:text=""
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/tv6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tv5"
-                android:layout_marginLeft="@dimen/default_magin"
-                android:layout_marginTop="@dimen/default_magin"
-                android:freezesText="true"
-                android:text="กลุ๊ปเลือด : "
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/blood"
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tv5"
-                android:layout_marginLeft="@dimen/default_magin"
-                android:layout_marginTop="@dimen/default_magin"
-                android:layout_toRightOf="@+id/tv6"
-                android:ellipsize="end"
-                android:freezesText="true"
-                android:text=""
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/tv7"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tv6"
-                android:layout_marginLeft="@dimen/default_magin"
-                android:layout_marginTop="@dimen/default_magin"
-                android:freezesText="true"
-                android:text="น้ำหนัก : "
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/weight"
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tv6"
-                android:layout_marginLeft="@dimen/default_magin"
-                android:layout_marginTop="@dimen/default_magin"
-                android:layout_toRightOf="@+id/tv7"
-                android:ellipsize="end"
-                android:freezesText="true"
-                android:text=""
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/tv8"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tv7"
-                android:layout_marginLeft="@dimen/default_magin"
-                android:layout_marginTop="@dimen/default_magin"
-                android:freezesText="true"
-                android:text="ส่วนสูง : "
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/height"
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tv7"
-                android:layout_marginLeft="@dimen/default_magin"
-                android:layout_marginTop="@dimen/default_magin"
-                android:layout_toRightOf="@+id/tv8"
-                android:ellipsize="end"
-                android:freezesText="true"
-                android:text=""
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/tv9"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tv8"
-                android:layout_marginLeft="@dimen/default_magin"
-                android:layout_marginTop="@dimen/default_magin"
-                android:freezesText="true"
-                android:text="BMI : "
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/bmi"
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tv8"
-                android:layout_marginLeft="@dimen/default_magin"
-                android:layout_marginTop="@dimen/default_magin"
-                android:layout_toRightOf="@+id/tv9"
-                android:ellipsize="end"
-                android:freezesText="true"
-                android:text=""
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/tv10"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tv9"
-                android:layout_marginLeft="@dimen/default_magin"
-                android:layout_marginTop="@dimen/default_magin"
-                android:freezesText="true"
-                android:text="โรคประจำตัว : "
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/UserMedicalCondition"
+            <android.support.v7.widget.CardView
+                app:cardUseCompatPadding="true"
+                app:cardCornerRadius="20dp"
+                android:id="@+id/top_card"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tv10"
-                android:layout_marginLeft="@dimen/default_magin"
-                android:layout_marginRight="@dimen/default_magin"
-                android:layout_marginTop="@dimen/default_magin"
-                android:ellipsize="end"
-                android:freezesText="true"
-                android:maxLines="3"
-                android:text=""
-                android:textSize="18sp" />
+                android:layout_height="wrap_content">
+               <RelativeLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content">
+                   <de.hdodenhof.circleimageview.CircleImageView
+                       android:id="@+id/profile_image"
+                       android:layout_width="100dp"
+                       android:layout_height="100dp"
+                       android:layout_centerHorizontal="true"
+                       android:layout_marginTop="32dp"
+                       android:src="@drawable/profile" />
 
-            <TextView
-                android:id="@+id/tv11"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/UserMedicalCondition"
-                android:layout_marginLeft="@dimen/default_magin"
-                android:layout_marginTop="@dimen/default_magin"
-                android:freezesText="true"
-                android:text="ยาที่แพ้ : "
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                   <TextView
+                       android:id="@+id/user_display_name"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:layout_below="@+id/profile_image"
+                       android:layout_centerHorizontal="true"
+                       android:layout_marginTop="@dimen/default_magin"
+                       android:text="USER"
+                       android:textSize="18sp"
+                       android:textStyle="bold" />
+               </RelativeLayout>
+            </android.support.v7.widget.CardView>
 
-            <TextView
-                android:id="@+id/DangerMedical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tv11"
-                android:layout_marginLeft="@dimen/default_magin"
-                android:layout_marginRight="@dimen/default_magin"
-                android:layout_marginTop="@dimen/default_magin"
-                android:ellipsize="end"
-                android:freezesText="true"
-                android:maxLines="3"
-                android:text=""
-                android:textSize="18sp" />
+           <android.support.v7.widget.CardView
+               app:cardCornerRadius="20dp"
+               app:cardUseCompatPadding="true"
+               android:layout_below="@+id/top_card"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/tv12"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/DangerMedical"
-                android:layout_marginLeft="@dimen/default_magin"
-                android:layout_marginTop="@dimen/default_magin"
-                android:freezesText="true"
-                android:text="สูบบุหรี่ : "
-                android:textSize="18sp"
-                android:textStyle="bold" />
+               <RelativeLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content">
+                   <TextView
+                       android:textColor="@android:color/black"
+                       android:id="@+id/tv1"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:layout_marginLeft="@dimen/default_magin"
+                       android:layout_marginTop="32dp"
+                       android:freezesText="true"
+                       android:text="ข้อมูลผู้ใช้ (User's information)"
+                       android:textSize="22sp" />
 
-            <TextView
-                android:id="@+id/smoke"
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/DangerMedical"
-                android:layout_marginLeft="@dimen/default_magin"
-                android:layout_marginTop="@dimen/default_magin"
-                android:layout_toRightOf="@+id/tv12"
-                android:ellipsize="end"
-                android:freezesText="true"
-                android:text=""
-                android:textSize="18sp" />
+                   <TextView
+                       android:id="@+id/tv2"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:layout_below="@+id/tv1"
+                       android:layout_marginLeft="@dimen/default_magin"
+                       android:layout_marginTop="@dimen/default_magin"
+                       android:freezesText="true"
+                       android:text="ชื่อ-สกุล : "
+                       android:textSize="18sp"
+                       android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/tv13"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tv12"
-                android:layout_marginLeft="@dimen/default_magin"
-                android:layout_marginTop="@dimen/default_magin"
-                android:freezesText="true"
-                android:text="ดื่มแอลกอฮอร์่ : "
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                   <TextView
+                       android:id="@+id/name"
+                       android:layout_width="250dp"
+                       android:layout_height="wrap_content"
+                       android:layout_below="@+id/tv1"
+                       android:layout_marginLeft="@dimen/default_magin"
+                       android:layout_marginTop="@dimen/default_magin"
+                       android:layout_toRightOf="@+id/tv2"
+                       android:ellipsize="end"
+                       android:freezesText="true"
+                       android:text=""
+                       android:textSize="18sp" />
 
-            <TextView
-                android:id="@+id/drink"
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tv12"
-                android:layout_marginLeft="@dimen/default_magin"
-                android:layout_marginTop="@dimen/default_magin"
-                android:layout_toRightOf="@+id/tv13"
-                android:ellipsize="end"
-                android:freezesText="true"
-                android:text=""
-                android:textSize="18sp" />
+                   <TextView
+                       android:id="@+id/tv3"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:layout_below="@+id/tv2"
+                       android:layout_marginLeft="@dimen/default_magin"
+                       android:layout_marginTop="@dimen/default_magin"
+                       android:freezesText="true"
+                       android:text="วันเดือนปีเกิด : "
+                       android:textSize="18sp"
+                       android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/tv14"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tv13"
-                android:layout_marginLeft="@dimen/default_magin"
-                android:layout_marginTop="@dimen/default_magin"
-                android:freezesText="true"
-                android:text="ความดันโลหิต : "
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                   <TextView
+                       android:id="@+id/dob"
+                       android:layout_width="200dp"
+                       android:layout_height="wrap_content"
+                       android:layout_below="@+id/tv2"
+                       android:layout_marginLeft="@dimen/default_magin"
+                       android:layout_marginTop="@dimen/default_magin"
+                       android:layout_toRightOf="@+id/tv3"
+                       android:ellipsize="end"
+                       android:freezesText="true"
+                       android:text=""
+                       android:textSize="18sp" />
 
-            <TextView
-                android:id="@+id/blood_pressure"
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tv13"
-                android:layout_marginLeft="@dimen/default_magin"
-                android:layout_marginTop="@dimen/default_magin"
-                android:layout_toRightOf="@+id/tv14"
-                android:ellipsize="end"
-                android:freezesText="true"
-                android:text=""
-                android:textSize="18sp" />
+                   <TextView
+                       android:id="@+id/tv4"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:layout_below="@+id/tv3"
+                       android:layout_marginLeft="@dimen/default_magin"
+                       android:layout_marginTop="@dimen/default_magin"
+                       android:freezesText="true"
+                       android:text="อายุ : "
+                       android:textSize="18sp"
+                       android:textStyle="bold" />
 
-            <TextView
-                android:layout_marginBottom="@dimen/default_magin"
-                android:id="@+id/tv15"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tv14"
-                android:layout_marginLeft="@dimen/default_magin"
-                android:layout_marginTop="@dimen/default_magin"
-                android:freezesText="true"
-                android:text="ระดับน้ำตาลในเลือด : "
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                   <TextView
+                       android:id="@+id/age"
+                       android:layout_width="250dp"
+                       android:layout_height="wrap_content"
+                       android:layout_below="@+id/tv3"
+                       android:layout_marginLeft="@dimen/default_magin"
+                       android:layout_marginTop="@dimen/default_magin"
+                       android:layout_toRightOf="@+id/tv4"
+                       android:ellipsize="end"
+                       android:freezesText="true"
+                       android:text=""
+                       android:textSize="18sp" />
 
-            <TextView
-                android:id="@+id/bloodSugar"
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tv14"
-                android:layout_marginLeft="@dimen/default_magin"
-                android:layout_marginTop="@dimen/default_magin"
-                android:layout_toRightOf="@+id/tv15"
-                android:ellipsize="end"
-                android:freezesText="true"
-                android:text=""
-                android:textSize="18sp" />
+                   <TextView
+                       android:id="@+id/tv5"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:layout_below="@+id/tv4"
+                       android:layout_marginLeft="@dimen/default_magin"
+                       android:layout_marginTop="@dimen/default_magin"
+                       android:freezesText="true"
+                       android:text="เพศ : "
+                       android:textSize="18sp"
+                       android:textStyle="bold" />
+
+                   <TextView
+                       android:id="@+id/gender"
+                       android:layout_width="250dp"
+                       android:layout_height="wrap_content"
+                       android:layout_below="@+id/tv4"
+                       android:layout_marginLeft="@dimen/default_magin"
+                       android:layout_marginTop="@dimen/default_magin"
+                       android:layout_toRightOf="@+id/tv5"
+                       android:ellipsize="end"
+                       android:freezesText="true"
+                       android:text=""
+                       android:textSize="18sp" />
+
+                   <TextView
+                       android:id="@+id/tv6"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:layout_below="@+id/tv5"
+                       android:layout_marginLeft="@dimen/default_magin"
+                       android:layout_marginTop="@dimen/default_magin"
+                       android:freezesText="true"
+                       android:text="กลุ๊ปเลือด : "
+                       android:textSize="18sp"
+                       android:textStyle="bold" />
+
+                   <TextView
+                       android:id="@+id/blood"
+                       android:layout_width="250dp"
+                       android:layout_height="wrap_content"
+                       android:layout_below="@+id/tv5"
+                       android:layout_marginLeft="@dimen/default_magin"
+                       android:layout_marginTop="@dimen/default_magin"
+                       android:layout_toRightOf="@+id/tv6"
+                       android:ellipsize="end"
+                       android:freezesText="true"
+                       android:text=""
+                       android:textSize="18sp" />
+
+                   <TextView
+                       android:id="@+id/tv7"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:layout_below="@+id/tv6"
+                       android:layout_marginLeft="@dimen/default_magin"
+                       android:layout_marginTop="@dimen/default_magin"
+                       android:freezesText="true"
+                       android:text="น้ำหนัก : "
+                       android:textSize="18sp"
+                       android:textStyle="bold" />
+
+                   <TextView
+                       android:id="@+id/weight"
+                       android:layout_width="250dp"
+                       android:layout_height="wrap_content"
+                       android:layout_below="@+id/tv6"
+                       android:layout_marginLeft="@dimen/default_magin"
+                       android:layout_marginTop="@dimen/default_magin"
+                       android:layout_toRightOf="@+id/tv7"
+                       android:ellipsize="end"
+                       android:freezesText="true"
+                       android:text=""
+                       android:textSize="18sp" />
+
+                   <TextView
+                       android:id="@+id/tv8"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:layout_below="@+id/tv7"
+                       android:layout_marginLeft="@dimen/default_magin"
+                       android:layout_marginTop="@dimen/default_magin"
+                       android:freezesText="true"
+                       android:text="ส่วนสูง : "
+                       android:textSize="18sp"
+                       android:textStyle="bold" />
+
+                   <TextView
+                       android:id="@+id/height"
+                       android:layout_width="250dp"
+                       android:layout_height="wrap_content"
+                       android:layout_below="@+id/tv7"
+                       android:layout_marginLeft="@dimen/default_magin"
+                       android:layout_marginTop="@dimen/default_magin"
+                       android:layout_toRightOf="@+id/tv8"
+                       android:ellipsize="end"
+                       android:freezesText="true"
+                       android:text=""
+                       android:textSize="18sp" />
+
+                   <TextView
+                       android:id="@+id/tv9"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:layout_below="@+id/tv8"
+                       android:layout_marginLeft="@dimen/default_magin"
+                       android:layout_marginTop="@dimen/default_magin"
+                       android:freezesText="true"
+                       android:text="BMI : "
+                       android:textSize="18sp"
+                       android:textStyle="bold" />
+
+                   <TextView
+                       android:id="@+id/bmi"
+                       android:layout_width="250dp"
+                       android:layout_height="wrap_content"
+                       android:layout_below="@+id/tv8"
+                       android:layout_marginLeft="@dimen/default_magin"
+                       android:layout_marginTop="@dimen/default_magin"
+                       android:layout_toRightOf="@+id/tv9"
+                       android:ellipsize="end"
+                       android:freezesText="true"
+                       android:text=""
+                       android:textSize="18sp" />
+
+                   <TextView
+                       android:id="@+id/tv10"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:layout_below="@+id/tv9"
+                       android:layout_marginLeft="@dimen/default_magin"
+                       android:layout_marginTop="@dimen/default_magin"
+                       android:freezesText="true"
+                       android:text="โรคประจำตัว : "
+                       android:textSize="18sp"
+                       android:textStyle="bold" />
+
+                   <TextView
+                       android:id="@+id/UserMedicalCondition"
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:layout_below="@+id/tv10"
+                       android:layout_marginLeft="@dimen/default_magin"
+                       android:layout_marginRight="@dimen/default_magin"
+                       android:layout_marginTop="@dimen/default_magin"
+                       android:ellipsize="end"
+                       android:freezesText="true"
+                       android:maxLines="3"
+                       android:text=""
+                       android:textSize="18sp" />
+
+                   <TextView
+                       android:id="@+id/tv11"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:layout_below="@+id/UserMedicalCondition"
+                       android:layout_marginLeft="@dimen/default_magin"
+                       android:layout_marginTop="@dimen/default_magin"
+                       android:freezesText="true"
+                       android:text="ยาที่แพ้ : "
+                       android:textSize="18sp"
+                       android:textStyle="bold" />
+
+                   <TextView
+                       android:id="@+id/DangerMedical"
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:layout_below="@+id/tv11"
+                       android:layout_marginLeft="@dimen/default_magin"
+                       android:layout_marginRight="@dimen/default_magin"
+                       android:layout_marginTop="@dimen/default_magin"
+                       android:ellipsize="end"
+                       android:freezesText="true"
+                       android:maxLines="3"
+                       android:text=""
+                       android:textSize="18sp" />
+
+                   <TextView
+                       android:id="@+id/tv12"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:layout_below="@+id/DangerMedical"
+                       android:layout_marginLeft="@dimen/default_magin"
+                       android:layout_marginTop="@dimen/default_magin"
+                       android:freezesText="true"
+                       android:text="สูบบุหรี่ : "
+                       android:textSize="18sp"
+                       android:textStyle="bold" />
+
+                   <TextView
+                       android:id="@+id/smoke"
+                       android:layout_width="250dp"
+                       android:layout_height="wrap_content"
+                       android:layout_below="@+id/DangerMedical"
+                       android:layout_marginLeft="@dimen/default_magin"
+                       android:layout_marginTop="@dimen/default_magin"
+                       android:layout_toRightOf="@+id/tv12"
+                       android:ellipsize="end"
+                       android:freezesText="true"
+                       android:text=""
+                       android:textSize="18sp" />
+
+                   <TextView
+                       android:id="@+id/tv13"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:layout_below="@+id/tv12"
+                       android:layout_marginLeft="@dimen/default_magin"
+                       android:layout_marginTop="@dimen/default_magin"
+                       android:freezesText="true"
+                       android:text="ดื่มแอลกอฮอร์่ : "
+                       android:textSize="18sp"
+                       android:textStyle="bold" />
+
+                   <TextView
+                       android:id="@+id/drink"
+                       android:layout_width="250dp"
+                       android:layout_height="wrap_content"
+                       android:layout_below="@+id/tv12"
+                       android:layout_marginLeft="@dimen/default_magin"
+                       android:layout_marginTop="@dimen/default_magin"
+                       android:layout_toRightOf="@+id/tv13"
+                       android:ellipsize="end"
+                       android:freezesText="true"
+                       android:text=""
+                       android:textSize="18sp" />
+
+                   <TextView
+                       android:id="@+id/tv14"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:layout_below="@+id/tv13"
+                       android:layout_marginLeft="@dimen/default_magin"
+                       android:layout_marginTop="@dimen/default_magin"
+                       android:freezesText="true"
+                       android:text="ความดันโลหิต : "
+                       android:textSize="18sp"
+                       android:textStyle="bold" />
+
+                   <TextView
+                       android:id="@+id/blood_pressure"
+                       android:layout_width="250dp"
+                       android:layout_height="wrap_content"
+                       android:layout_below="@+id/tv13"
+                       android:layout_marginLeft="@dimen/default_magin"
+                       android:layout_marginTop="@dimen/default_magin"
+                       android:layout_toRightOf="@+id/tv14"
+                       android:ellipsize="end"
+                       android:freezesText="true"
+                       android:text=""
+                       android:textSize="18sp" />
+
+                   <TextView
+                       android:layout_marginBottom="@dimen/default_magin"
+                       android:id="@+id/tv15"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:layout_below="@+id/tv14"
+                       android:layout_marginLeft="@dimen/default_magin"
+                       android:layout_marginTop="@dimen/default_magin"
+                       android:freezesText="true"
+                       android:text="ระดับน้ำตาลในเลือด : "
+                       android:textSize="18sp"
+                       android:textStyle="bold" />
+
+                   <TextView
+                       android:id="@+id/bloodSugar"
+                       android:layout_width="250dp"
+                       android:layout_height="wrap_content"
+                       android:layout_below="@+id/tv14"
+                       android:layout_marginLeft="@dimen/default_magin"
+                       android:layout_marginTop="@dimen/default_magin"
+                       android:layout_toRightOf="@+id/tv15"
+                       android:ellipsize="end"
+                       android:freezesText="true"
+                       android:text=""
+                       android:textSize="18sp" />
+               </RelativeLayout>
+
+           </android.support.v7.widget.CardView>
 
         </RelativeLayout>
 

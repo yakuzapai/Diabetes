@@ -36,7 +36,7 @@ public class FoodActivity extends AppCompatActivity {
 
     private void setInstances() {
         setSupportActionBar(toolbar);
-        setTitle("น้ำตาลในอาหาร");
+        setTitle("พลังงานในอาหาร");
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
