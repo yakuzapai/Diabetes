@@ -75,6 +75,7 @@
                 android:layout_marginRight="@dimen/default_magin">
 
                 <EditText
+                    android:layout_marginLeft="@dimen/default_magin"
                     android:id="@+id/med_size"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

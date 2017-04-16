@@ -21,7 +21,12 @@ import com.kandon.caramelwaffle.diabetes.Model.Contact;
 import com.kandon.caramelwaffle.diabetes.Model.Medicine;
 import com.kandon.caramelwaffle.diabetes.R;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import es.dmoral.toasty.Toasty;
@@ -46,6 +51,13 @@ public class MedicineAdapter extends RecyclerView.Adapter<MedicineAdapter.MyView
     private RealmResults<Medicine> listMed;
     private RealmResults<Medicine> Med_del;
 
+    private String breakfast = "";
+    private String lanch = "";
+    private String diner = "";
+    private String sleep = "";
+
+    private String time_report;
+
     public MedicineAdapter(Context context) {
         // call data
 
@@ -62,6 +74,12 @@ public class MedicineAdapter extends RecyclerView.Adapter<MedicineAdapter.MyView
 
         }
 
+        SharedPreferences info = context.getSharedPreferences("activity_information", context.MODE_PRIVATE);
+        breakfast = info.getString("breakfast", "");
+        lanch = info.getString("lanch", "");
+        diner = info.getString("dinner", "");
+        sleep = info.getString("sleep", "");
+
     }
 
     @Override
@@ -74,10 +92,25 @@ public class MedicineAdapter extends RecyclerView.Adapter<MedicineAdapter.MyView
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
 
 
+        if (times.get(position).equals("ก่อนอาหารเช้า")) {
+            time_report = calTime(breakfast, true);
+        } else if (times.get(position).equals("ก่อนอาหารกลางวัน")) {
+            time_report = calTime(lanch, true);
+        } else if (times.get(position).equals("ก่อนอาหารเย็น")) {
+            time_report = calTime(diner, true);
+        } else if (times.get(position).equals("ก่อนนอน")) {
+            time_report = calTime(sleep, true);
+        } else if (times.get(position).equals("หลังอาหารเช้า")) {
+            time_report = calTime(breakfast, false);
+        } else if (times.get(position).equals("หลังอาหารกลางวัน")) {
+            time_report = calTime(lanch, false);
+        } else if (times.get(position).equals("หลังอาหารเย็น")) {
+            time_report = calTime(diner, false);
+        }
 
         holder.med_name.setText(names.get(position));
-        holder.med_qty.setText("ประเภท"+" ("+kinds.get(position)+")"+"\nจำนวน  "+qtys.get(position));
-        holder.med_before.setText("เวลา : "+times.get(position));
+        holder.med_qty.setText("ประเภท" + " (" + kinds.get(position) + ")" + "\nจำนวน  " + qtys.get(position));
+        holder.med_before.setText("เวลา : " + time_report + " (" + times.get(position) + ")");
 
 
         holder.layout.setOnClickListener(new View.OnClickListener() {
@@ -85,10 +118,10 @@ public class MedicineAdapter extends RecyclerView.Adapter<MedicineAdapter.MyView
             public void onClick(View v) {
                 new MaterialDialog.Builder(mContext)
                         .title("ข้อมูลยา")
-                        .content(Html.fromHtml( "<b>ชื่อยา</b> "+names.get(position)+"<br>"+
-                                "<b>ชื่อการค้า</b> "+types.get(position)+"<br>"+
-                                "<b>ปริมาณ</b> "+qtys.get(position)+"<br>"+
-                                "<b>เวลา</b> "+times.get(position))
+                        .content(Html.fromHtml("<b>ชื่อยา</b> " + names.get(position) + "<br>" +
+                                "<b>ชื่อการค้า</b> " + types.get(position) + "<br>" +
+                                "<b>ปริมาณ</b> " + qtys.get(position) + "<br>" +
+                                "<b>เวลา</b> " + times.get(position))
                         )
                         .cancelable(true)
                         .positiveText("ตกลง")
@@ -141,10 +174,10 @@ public class MedicineAdapter extends RecyclerView.Adapter<MedicineAdapter.MyView
 
         public MyViewHolder(View itemView) {
             super(itemView);
-            this.med_name = (TextView)itemView.findViewById(R.id.med_name);
-            this.med_before = (TextView)itemView.findViewById(R.id.med_before);
-            this.med_qty = (TextView)itemView.findViewById(R.id.med_qty);
-            this.layout = (RelativeLayout)itemView.findViewById(R.id.layout);
+            this.med_name = (TextView) itemView.findViewById(R.id.med_name);
+            this.med_before = (TextView) itemView.findViewById(R.id.med_before);
+            this.med_qty = (TextView) itemView.findViewById(R.id.med_qty);
+            this.layout = (RelativeLayout) itemView.findViewById(R.id.layout);
 
         }
     }
@@ -154,7 +187,37 @@ public class MedicineAdapter extends RecyclerView.Adapter<MedicineAdapter.MyView
     }
 
     public RealmResults<Medicine> getMedicineByID(int ids) {
-        return realm.where(Medicine.class).equalTo("id",ids).findAll();
+        return realm.where(Medicine.class).equalTo("id", ids).findAll();
+    }
+
+    public String calTime(String time_string, Boolean isBefore) {
+        String startDateString = time_string;
+        DateFormat df = new SimpleDateFormat("HH:mm");
+        Date startDate = null;
+        try {
+            startDate = df.parse(startDateString);
+            String newDateString = df.format(startDate);
+            System.out.println(newDateString);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+
+        Calendar cal = Calendar.getInstance();
+        // remove next line if you're always using the current time.
+        cal.setTime(startDate);
+        if (isBefore) {
+            cal.add(Calendar.MINUTE, -30);
+        } else {
+            cal.add(Calendar.MINUTE, 30);
+        }
+
+        Date time_med = cal.getTime();
+
+        DateFormat dfs = new SimpleDateFormat("HH:mm");
+        String time_report = df.format(time_med);
+
+        return time_report;
     }
 
 }

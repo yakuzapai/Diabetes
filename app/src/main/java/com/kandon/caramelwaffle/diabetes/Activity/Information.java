@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -22,7 +23,11 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -45,15 +50,15 @@ public class Information extends AppCompatActivity implements DatePickerDialog.O
     private Context context;
     Toolbar toolbar;
     EditText editTextName, weight, height, UserMedicalCondition, DangerMedical, UserBP1, UserBP2, bloodSugar;
-    Button button, btn_dob,BtnBreakfast,BtnLanch,BtnDinner;
-    TextView dob_tv, age, bmi,tv_break,tv_lanch,tv_dinner;
+    Button button, btn_dob,BtnBreakfast,BtnLanch,BtnDinner,BtnSleep;
+    TextView dob_tv, age, bmi,tv_break,tv_lanch,tv_dinner,tv_sleep;
     int yearold;
     RadioGroup GenderRg, RGBlood, RGsmoke, drinkRG;
     RadioButton genderRadioButton, bloodRadioButton, smokeRadioButton, drinkRadioButton;
     float heights = 0, weights = 0, bmis;
 
-    String h1,h2,h3;
-    String m1,m2,m3;
+    String h1,h2,h3,h4;
+    String m1,m2,m3,m4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,6 +86,7 @@ public class Information extends AppCompatActivity implements DatePickerDialog.O
         BtnBreakfast = (Button) findViewById(R.id.BtnBreakfast);
         BtnLanch = (Button) findViewById(R.id.BtnLanch);
         BtnDinner = (Button) findViewById(R.id.BtnDinner);
+        BtnSleep = (Button)  findViewById(R.id.BtnSleep);
 
         dob_tv = (TextView) findViewById(R.id.dob_tv);
         age = (TextView) findViewById(R.id.age);
@@ -88,7 +94,7 @@ public class Information extends AppCompatActivity implements DatePickerDialog.O
         tv_break = (TextView) findViewById(R.id.tv_break);
         tv_lanch = (TextView) findViewById(R.id.tv_lanch);
         tv_dinner = (TextView) findViewById(R.id.tv_dinner);
-
+        tv_sleep = (TextView) findViewById(R.id.tv_sleep);
 
 
         GenderRg = (RadioGroup) findViewById(R.id.rdGender);
@@ -275,6 +281,34 @@ public class Information extends AppCompatActivity implements DatePickerDialog.O
             }
         });
 
+        BtnSleep.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Calendar mcurrentTime = Calendar.getInstance();
+                int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
+                int minute = mcurrentTime.get(Calendar.MINUTE);
+                TimePickerDialog mTimePicker;
+                mTimePicker = new TimePickerDialog(context, new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
+
+                        if (selectedHour<10){
+                            h4 = "0"+selectedHour;
+                        }else {
+                            h4 = selectedHour+"";
+                        }
+                        if (selectedMinute<10){
+                            m4 = "0"+selectedMinute;
+                        }else {
+                            m4 = selectedMinute+"";
+                        }
+                        tv_sleep.setText(h4 + ":" + m4);
+                    }
+                }, hour, minute, true);//Yes 24 hour time
+                mTimePicker.show();
+            }
+        });
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -283,7 +317,7 @@ public class Information extends AppCompatActivity implements DatePickerDialog.O
                 if (!editTextName.getText().toString().equals("") && !dob_tv.getText().toString().equals("")
                         && !weight.getText().toString().equals("") && !height.getText().toString().equals("")
                         && !tv_break.getText().toString().equals("")&& !tv_lanch.getText().toString().equals("")
-                        && !tv_dinner.getText().toString().equals("")
+                        && !tv_dinner.getText().toString().equals("") && !tv_sleep.getText().toString().equals("")
                         ) {
 
                     new MaterialDialog.Builder(context)
@@ -339,10 +373,13 @@ public class Information extends AppCompatActivity implements DatePickerDialog.O
         tv_break.setText(info.getString("breakfast", "ไม่มีข้อมูล"));
         tv_lanch.setText(info.getString("lanch","ไม่มีข้อมูล"));
         tv_dinner.setText(info.getString("dinner","ไม่มีข้อมูล"));
+        tv_sleep.setText(info.getString("sleep","ไม่มีข้อมูล"));
     }
 
 
     public void saveInformation() {
+
+
 
         genderRadioButton = (RadioButton) findViewById(GenderRg.getCheckedRadioButtonId());
         bloodRadioButton = (RadioButton) findViewById(RGBlood.getCheckedRadioButtonId());
@@ -370,6 +407,7 @@ public class Information extends AppCompatActivity implements DatePickerDialog.O
         editor.putString("breakfast",tv_break.getText().toString());
         editor.putString("lanch",tv_lanch.getText().toString());
         editor.putString("dinner",tv_dinner.getText().toString());
+        editor.putString("sleep",tv_sleep.getText().toString());
         editor.apply();
 
         user = new User(editTextName.getText().toString(),

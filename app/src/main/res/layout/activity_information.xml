@@ -537,15 +537,7 @@
                 android:text="เลือกเวลา" />
 
 
-            <Button
-                android:id="@+id/btn_save"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/dinner"
-                android:layout_centerHorizontal="true"
-                android:layout_marginBottom="@dimen/default_magin"
-                android:layout_marginTop="@dimen/default_magin"
-                android:text="บันทึกข้อมูล" />
+
 
             <TextView
                 android:id="@+id/tv_break"
@@ -580,6 +572,63 @@
                 android:layout_toLeftOf="@+id/BtnDinner"
                 android:text=""
                 android:textSize="18sp" />
+
+
+            <ImageView
+                android:layout_marginTop="@dimen/default_magin"
+                android:id="@+id/line2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/dinner"
+                android:layout_margin="@dimen/default_magin"
+                android:scaleType="centerCrop"
+                android:src="@drawable/lightgreyline" />
+
+
+            <TextView
+                android:id="@+id/sleep"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/line2"
+                android:layout_marginLeft="@dimen/default_magin"
+                android:layout_marginTop="@dimen/default_magin"
+                android:text="เวลาเข้านอน"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tv_sleep"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/tv_break"
+                android:layout_below="@+id/line2"
+                android:layout_marginTop="@dimen/default_magin"
+                android:layout_toLeftOf="@+id/BtnDinner"
+                android:text=""
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/BtnSleep"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/line2"
+                android:layout_marginRight="@dimen/default_magin"
+                android:layout_marginTop="8dp"
+                android:text="เลือกเวลา" />
+
+
+            <Button
+                android:layout_below="@+id/sleep"
+                android:id="@+id/btn_save"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="@dimen/default_magin"
+                android:layout_marginTop="32dp"
+                android:text="บันทึกข้อมูล" />
+
+
+
 
 
         </RelativeLayout>
