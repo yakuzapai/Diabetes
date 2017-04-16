@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import com.kandon.caramelwaffle.diabetes.Fragment.DessertFragment;
 import com.kandon.caramelwaffle.diabetes.Fragment.DrinkFragment;
 import com.kandon.caramelwaffle.diabetes.Fragment.FoodFragment;
+import com.kandon.caramelwaffle.diabetes.Fragment.FruitFragment;
 import com.kandon.caramelwaffle.diabetes.R;
 
 public class FoodActivity extends AppCompatActivity {
@@ -58,9 +59,12 @@ public class FoodActivity extends AppCompatActivity {
                     return new FoodFragment();
                 case 1:
                     return new DrinkFragment();
+                case 2:
+                    return new DessertFragment();
                 case 3:
                 default:
-                    return new DessertFragment();
+                    return new FruitFragment();
+
             }
         }
 

@@ -55,7 +55,7 @@ public class FruitFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_food, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_fruit, container, false);
         initInstances(rootView, savedInstanceState);
         setInstances(rootView, savedInstanceState);
         return rootView;
@@ -63,7 +63,7 @@ public class FruitFragment extends Fragment {
 
     private void initInstances(View rootView, Bundle savedInstanceState) {
         // Init 'View' instance(s) with rootView.findViewById here
-        fruitRecyclerView = (RecyclerView) rootView.findViewById(R.id.FruRecyclerview);
+        fruitRecyclerView = (RecyclerView) rootView.findViewById(R.id.FruitRecycler);
     }
 
     private void setInstances(View rootView, Bundle savedInstanceState) {
