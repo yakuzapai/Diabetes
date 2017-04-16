@@ -66,7 +66,7 @@ public class FoodActivity extends AppCompatActivity {
 
         @Override
         public int getCount() {
-            return 3;
+            return 4;
         }
 
         @Override
@@ -75,10 +75,13 @@ public class FoodActivity extends AppCompatActivity {
                 case 0:
                     return "อาหาร";
                 case 1:
-                    return "เครื่องดื่มขนม";
+                    return "เครื่องดื่ม";
                 case 2:
-                default:
                     return "ขนม";
+                case 3:
+                    default:
+                        return "ผลไม้";
+
             }
         }
     }

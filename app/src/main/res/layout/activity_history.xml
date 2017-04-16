@@ -36,7 +36,7 @@
         />
 
     <TextView
-        android:text="กรุณาเลือกวันที่ที่ต้องการดูบันทึกคาน้ำตาล"
+        android:text="เลือกวันที่ต้องการดูรายการบันทึก"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/calendarView"
         android:layout_width="wrap_content"

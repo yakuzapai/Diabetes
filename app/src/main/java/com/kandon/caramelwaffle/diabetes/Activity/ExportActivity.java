@@ -18,6 +18,7 @@ import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
@@ -244,14 +245,6 @@ public class ExportActivity extends AppCompatActivity {
     }
 
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            finish();
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
 
     public RealmResults<Sugar> getDateSugar(int y, int m, int d) {
         return realm.where(Sugar.class).equalTo("date",d + "/" + m + "/" + y).findAll();
@@ -275,5 +268,50 @@ public class ExportActivity extends AppCompatActivity {
         } else {
             return android.util.Patterns.EMAIL_ADDRESS.matcher(target).matches();
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_send, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_send) {
+            if (isValidEmail(email.getText().toString())&&!date.getText().equals("ไม่พบรายการบันทึก")){
+                new MaterialDialog.Builder(mContext)
+                        .title("ส่งข้อมูล")
+                        .content("ต้องการส่งข้อมูลหรือไม่")
+                        .positiveText("ตกลง")
+                        .negativeText("ยกเลิก")
+                        .onPositive(new MaterialDialog.SingleButtonCallback() {
+                            @Override
+                            public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                                sendEmail();
+                            }
+                        })
+                        .show();
+            }else {
+                Toasty.warning(mContext,"กรุณาป้อนข้อมูลให้ถูกต้อง",Toast.LENGTH_SHORT).show();
+            }
+
+            return true;
+        }
+
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+            return true;
+        }
+
+
+        return super.onOptionsItemSelected(item);
     }
 }

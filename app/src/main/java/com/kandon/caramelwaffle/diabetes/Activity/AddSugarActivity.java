@@ -164,7 +164,7 @@ public class AddSugarActivity extends AppCompatActivity {
                                         @Override
                                         public void execute(Realm realm) {
 
-                                            Toasty.info(mContext,currentMonth+"",Toast.LENGTH_LONG).show();
+                                          //  Toasty.info(mContext,currentMonth+"",Toast.LENGTH_LONG).show();
                                             Sugar sugar = realm.createObject(Sugar.class);
                                             sugar.setId(getNextKey());
                                             sugar.setDate(currentDay + "/" + currentMonth + "/" + currentYear);
