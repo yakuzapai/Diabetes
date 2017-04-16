@@ -101,7 +101,7 @@
                 android:layout_below="@+id/edt2"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="100dp"
-                android:text="นำข้อมูลออก" />
+                android:text="นำออกข้อมูล" />
         </RelativeLayout>
 
     </android.support.v7.widget.CardView>

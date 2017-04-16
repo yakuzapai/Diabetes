@@ -102,7 +102,7 @@ public class AddSugarActivity extends AppCompatActivity {
 
 
         final int currentDay = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
-        final int currentMonth = Calendar.getInstance().get(Calendar.MONTH);
+        final int currentMonth = Calendar.getInstance().get(Calendar.MONTH)+1;
         final int currentYear = Calendar.getInstance().get(Calendar.YEAR);
         SharedPreferences info = getSharedPreferences("sugar_last_time", MODE_PRIVATE);
         final int lastday = info.getInt("date", 0);
@@ -164,6 +164,7 @@ public class AddSugarActivity extends AppCompatActivity {
                                         @Override
                                         public void execute(Realm realm) {
 
+                                            Toasty.info(mContext,currentMonth+"",Toast.LENGTH_LONG).show();
                                             Sugar sugar = realm.createObject(Sugar.class);
                                             sugar.setId(getNextKey());
                                             sugar.setDate(currentDay + "/" + currentMonth + "/" + currentYear);

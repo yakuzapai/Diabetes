@@ -89,7 +89,7 @@ public class ExportActivity extends AppCompatActivity {
 
     private void setInstances() {
         setSupportActionBar(toolbar);
-        setTitle("น้ำออกข้อมูล");
+        setTitle("นำออกข้อมูล");
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -109,7 +109,7 @@ public class ExportActivity extends AppCompatActivity {
                         @Override
                         public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
 
-                            RealmResults<Sugar> listSugar = getDateSugar(year, month, dayOfMonth);
+                            RealmResults<Sugar> listSugar = getDateSugar(year, month+1, dayOfMonth);
                             for (Sugar sugar : listSugar) {
                                 i++;
                                 dates = sugar.getDate();
@@ -118,7 +118,7 @@ public class ExportActivity extends AppCompatActivity {
                             i = 0;
 
                             if (!str.equals("")) {
-                                date.setText("รายการบันทึกวันที่ " + dayOfMonth + "/" + month + "/" + year);
+                                date.setText("รายการบันทึกวันที่ " + dayOfMonth + "/" + (month+1) + "/" + year);
                             } else {
                                 date.setText("ไม่พบรายการบันทึก");
                             }

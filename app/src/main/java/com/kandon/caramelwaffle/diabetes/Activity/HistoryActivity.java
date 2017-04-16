@@ -65,7 +65,7 @@ public class HistoryActivity extends AppCompatActivity {
             @Override
             public void onDateSelected(@NonNull MaterialCalendarView widget, @NonNull CalendarDay date, boolean selected) {
                 str = "";
-                RealmResults<Sugar> listSugar = getDateSugar(date.getYear(),date.getMonth(),date.getDay());
+                RealmResults<Sugar> listSugar = getDateSugar(date.getYear(),date.getMonth()+1,date.getDay());
                 for (Sugar sugar : listSugar) {
                     i++;
                     str += "\n ระดับน้ำตาลครั้งที่ "+i+" : "+sugar.getSugarValue()+" mg/dL";
@@ -77,7 +77,7 @@ public class HistoryActivity extends AppCompatActivity {
 
 
                 new MaterialDialog.Builder(mContext)
-                        .title("ข้อมูลประจำวันที่ " + date.getYear()+"/"+date.getMonth()+"/"+date.getDay())
+                        .title("ข้อมูลประจำวันที่ " + date.getYear()+"/"+(date.getMonth()+1)+"/"+date.getDay())
                         .content(str)
                         .cancelable(true)
                         .positiveText("ตกลง")
