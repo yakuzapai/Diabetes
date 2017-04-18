@@ -87,8 +87,8 @@ public class InjectActivity extends AppCompatActivity {
                     medTypes="Byetta (ไบเอตตา)";
                 } else if (position == 2) {
                     med_img.setImageResource(R.drawable.lira);
-                    medTypes = "Victoza ()";
-                    spinner_type.setItems("Victoza ()");
+                    medTypes = "Victoza (วิกโตซา)";
+                    spinner_type.setItems("Victoza (วิคโทซา)");
                 }
                 count++;
             }

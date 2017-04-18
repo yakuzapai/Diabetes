@@ -591,7 +591,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/line2"
                 android:layout_marginLeft="@dimen/default_magin"
-                android:layout_marginTop="@dimen/default_magin"
+                android:layout_marginTop="12dp"
                 android:text="เวลาเข้านอน"
                 android:textSize="18sp" />
 
@@ -601,7 +601,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignLeft="@+id/tv_break"
                 android:layout_below="@+id/line2"
-                android:layout_marginTop="@dimen/default_magin"
+                android:layout_marginTop="12dp"
                 android:layout_toLeftOf="@+id/BtnDinner"
                 android:text=""
                 android:textSize="18sp" />
@@ -613,7 +613,6 @@
                 android:layout_alignParentRight="true"
                 android:layout_below="@+id/line2"
                 android:layout_marginRight="@dimen/default_magin"
-                android:layout_marginTop="8dp"
                 android:text="เลือกเวลา" />
 
 
